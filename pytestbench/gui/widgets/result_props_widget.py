@@ -3,7 +3,7 @@
 
 from typing import Any, Dict, Optional
 
-from PyQt5 import QtWidgets as QW
+from qtpy import QtWidgets as QW
 
 from pytestbench.model import ResultEnum, Test
 

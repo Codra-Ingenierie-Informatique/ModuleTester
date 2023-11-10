@@ -1,19 +1,19 @@
 # pylint: disable=missing-module-docstring, missing-class-docstring
 # pylint: disable=missing-function-docstring, no-value-for-parameter
 
-from PyQt5 import QtWidgets as QW
-from PyQt5.QtCore import pyqtSignal  # pylint: disable=no-name-in-module
+from qtpy import QtWidgets as QW
+from qtpy.QtCore import Signal
 
 
 class TMSignals(QW.QWidget):
-    benchLoaded = pyqtSignal()
-    benchSaved = pyqtSignal(str)
-    benchModified = pyqtSignal()
-    testbenchLoaded = pyqtSignal(str)
-    templateCreated = pyqtSignal()
+    benchLoaded = Signal()
+    benchSaved = Signal(str)
+    benchModified = Signal()
+    testbenchLoaded = Signal(str)
+    templateCreated = Signal()
 
     # concerning run
-    run_started = pyqtSignal()
-    run_paused = pyqtSignal()
-    run_stopped = pyqtSignal()
-    run_reloaded = pyqtSignal()
+    run_started = Signal()
+    run_paused = Signal()
+    run_stopped = Signal()
+    run_reloaded = Signal()

@@ -6,8 +6,8 @@ from typing import Optional
 from guidata.configtools import get_icon  # type: ignore
 from guidata.guitest import get_test_package  # type: ignore
 from guidata.widgets.codeeditor import CodeEditor  # type: ignore
-from PyQt5 import QtCore as QC
-from PyQt5 import QtWidgets as QW
+from qtpy import QtCore as QC
+from qtpy import QtWidgets as QW
 
 from ...model import ResultEnum, TestSuite
 from ..states.bench_signals import TMSignals

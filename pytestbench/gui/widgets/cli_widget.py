@@ -4,8 +4,8 @@
 from typing import Optional
 
 from click import Context
-from PyQt5 import QtCore as QC
-from PyQt5 import QtWidgets as QW
+from qtpy import QtCore as QC
+from qtpy import QtWidgets as QW
 
 from pytestbench.bench import cli, run
 from pytestbench.model import Test

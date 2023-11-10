@@ -3,8 +3,8 @@
 
 from typing import Any, Dict, Optional
 
-from PyQt5 import QtCore as QC
-from PyQt5 import QtWidgets as QW
+from qtpy import QtCore as QC
+from qtpy import QtWidgets as QW
 
 from pytestbench.model import Test
 

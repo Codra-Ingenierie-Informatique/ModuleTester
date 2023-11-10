@@ -4,9 +4,9 @@
 from typing import Optional
 
 from guidata.qthelpers import get_std_icon  # type: ignore
-from PyQt5 import QtCore as QC
-from PyQt5 import QtGui as QG
-from PyQt5 import QtWidgets as QW
+from qtpy import QtCore as QC
+from qtpy import QtGui as QG
+from qtpy import QtWidgets as QW
 
 from pytestbench.model import Test
 

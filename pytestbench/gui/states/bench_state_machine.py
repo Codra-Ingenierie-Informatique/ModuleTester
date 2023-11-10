@@ -3,7 +3,7 @@
 
 from typing import Optional
 
-from PyQt5 import QtCore as QC
+from qtpy import QtCore as QC
 
 from pytestbench.gui.states.bench_signals import TMSignals
 

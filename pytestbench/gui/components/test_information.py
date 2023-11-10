@@ -2,9 +2,9 @@
 # pylint: disable=missing-function-docstring
 from typing import Optional
 
-from PyQt5 import QtCore as QC
-from PyQt5 import QtGui as QG
-from PyQt5 import QtWidgets as QW
+from qtpy import QtCore as QC
+from qtpy import QtGui as QG
+from qtpy import QtWidgets as QW
 
 from pytestbench.gui.states.bench_signals import TMSignals
 from pytestbench.gui.widgets.tab_image_widget import TabImageWidget

@@ -3,17 +3,17 @@
 
 from typing import Optional
 
-from PyQt5 import QtCore as QC
+from qtpy import QtCore as QC
 
 from ...model import TestSuite
 
-# from PyQt5 import QtWidgets as QW
+# from qtpy import QtWidgets as QW
 
 
 class QSubprocess(QC.QThread):
-    run_ended = QC.pyqtSignal()
-    result_modified = QC.pyqtSignal(str, str)
-    run_started = QC.pyqtSignal()
+    run_ended = QC.Signal()
+    result_modified = QC.Signal(str, str)
+    run_started = QC.Signal()
 
     def __init__(
         self, test_suite: TestSuite, test_name: str, parent: Optional[QC.QObject] = None

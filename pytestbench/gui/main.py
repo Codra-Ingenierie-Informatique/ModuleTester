@@ -5,7 +5,7 @@ import sys
 from importlib import import_module
 from typing import Optional
 
-from PyQt5 import QtWidgets as QW
+from qtpy import QtWidgets as QW
 
 from pytestbench.gui.states.bench_signals import TMSignals
 from pytestbench.gui.states.bench_state_machine import TMStateMachine

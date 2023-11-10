@@ -1,8 +1,7 @@
 # pylint: disable=missing-module-docstring, missing-class-docstring
 # pylint: disable=missing-function-docstring
 
-from PyQt5 import QtWidgets as QW
-from PyQt5.QtCore import pyqtSlot  # pylint: disable=no-name-in-module
+from qtpy import QtWidgets as QW
 
 
 class TMStatusBar(QW.QStatusBar):
@@ -18,7 +17,6 @@ class TMStatusBar(QW.QStatusBar):
         self.insertWidget(0, self.state_label)
         self.insertWidget(1, self.path_label)
 
-    @pyqtSlot(str)
     def set_state_label(self, state_name: str):
         if state_name != "":
             self.state_label.setVisible(True)
@@ -26,7 +24,6 @@ class TMStatusBar(QW.QStatusBar):
         else:
             self.state_label.setVisible(False)
 
-    @pyqtSlot(str)
     def set_path_label(self, path: str):
         if path and path != "":
             self.path_label.setVisible(True)
