@@ -21,12 +21,10 @@ External resources:
     .. list-table::
         :widths: 20, 80
 
-        * - `Home`_
+        * - `GitHub`_
           - Project home page
         * - `PyPI`_
           - Python Package Index
-        * - `GitHub`_
-          - Bug reports and feature requests
 
 .. toctree::
    :maxdepth: 2
@@ -44,8 +42,7 @@ Copyrights and licensing
 
 .. _PlotPyStack: https://github.com/PlotPyStack
 .. _guidata: https://pypi.python.org/pypi/guidata
-.. _PyPI: https://pypi.python.org/pypi/DataLab
-.. _Home: https://codra-ingenierie-informatique.github.io/DataLab/
-.. _GitHub: https://github.com/Codra-Ingenierie-Informatique/DataLab
+.. _PyPI: https://pypi.python.org/pypi/PyTestBench
+.. _GitHub: https://github.com/Codra-Ingenierie-Informatique/PyTestBench
 .. _Codra: https://codra.net/
 .. _BSD 3-Clause: https://github.com/Codra-Ingenierie-Informatique/DataLab/blob/master/LICENSE
