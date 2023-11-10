@@ -4,6 +4,7 @@ set INKSCAPE_PATH="C:\Program Files\Inkscape\bin\inkscape.exe"
 copy PyTestBench.svg ..\pytestbench\data\logo
 %INKSCAPE_PATH% "PyTestBench-Title.svg" -o "PyTestBench-Title.png" -w 190
 copy PyTestBench-Title.png ..\doc\_static
+%INKSCAPE_PATH% "PyTestBench-Watermark.svg" -o "..\pytestbench\data\logo\PyTestBench-Watermark.png" -w 300
 %INKSCAPE_PATH% "PyTestBench-Banner.svg" -o "PyTestBench-Banner.png" -w 364
 copy PyTestBench-Banner.png ..\doc\_static
 

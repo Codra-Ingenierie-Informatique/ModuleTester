@@ -3,6 +3,9 @@ PyTestBench User Guide
 
 PyTestBench is a library for executing and managing Python package tests.
 
+.. figure:: images/PyTestBench-banner.png
+    :align: center
+
 PyTestBench is a spin-off of the `DataLab`_ project, mainly used to test
 `PlotPyStack`_ libraries.
 
@@ -12,7 +15,7 @@ PyTestBench is a spin-off of the `DataLab`_ project, mainly used to test
 .. figure:: _static/plotpy-stack-powered.png
     :align: center
 
-    PyTestBench is powered by `PlotPyStack <https://github.com/PlotPyStack>`_
+    PyTestBench is powered by `PlotPyStack`_
 
 External resources:
     .. list-table::
@@ -31,6 +34,7 @@ External resources:
 
    installation
    usage
+   example
 
 Copyrights and licensing
 ------------------------

@@ -21,6 +21,14 @@ PyTestBench is a spin-off of the [DataLab](https://github.com/Codra-Ingenierie-I
 mainly used to test [PlotPyStack](https://github.com/PlotPyStack) libraries
 and [DataLab](https://github.com/Codra-Ingenierie-Informatique/DataLab) itself.
 
+![PyTestBench](./doc/images/shots/empty.png)
+
+## Example
+
+Using PyTestBench on `guidata` Python package:
+
+![PyTestBench](./doc/images/shots/guidata.testbench.png)
+
 ### Credits
 
 Copyrights and licensing:

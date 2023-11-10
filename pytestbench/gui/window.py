@@ -4,10 +4,11 @@
 # guitest: skip
 import os
 from importlib import import_module
+from pathlib import Path
 from typing import Optional
 
 from guidata.config import CONF  # type: ignore
-from guidata.configtools import get_font, get_icon  # type: ignore
+from guidata.configtools import get_font, get_icon, get_image_file_path  # type: ignore
 from qtpy import QtCore as QC
 from qtpy import QtGui as QG
 from qtpy import QtWidgets as QW
@@ -35,6 +36,15 @@ class TMWindow(QW.QMainWindow):
         super().__init__(parent)
         self.setWindowIcon(get_icon("PyTestBench.svg"))
         self.setWindowTitle(APP_NAME)
+        self.setMinimumSize(800, 480)
+
+        font = get_font(CONF, "codeeditor")
+        ffamily, fsize = font.family(), font.pointSize()
+        bgurl = Path(get_image_file_path("PyTestBench-watermark.png")).as_posix()
+        self.ss_nobg = f"QWidget {{ font-family: '{ffamily}'; font-size: {fsize}pt;}}"
+        self.ss_withbg = f"QMainWindow {{ background: url({bgurl}) no-repeat center;}}"
+        self.setStyleSheet(self.ss_withbg + " " + self.ss_nobg)
+
         self.signals = signals
 
         if package is not None and testbench_path is None:
@@ -77,7 +87,7 @@ class TMWindow(QW.QMainWindow):
     def save_alert(self):
         save_mb = QW.QMessageBox(
             QW.QMessageBox.Warning,
-            "Test bench",
+            APP_NAME,
             "Do you want to save modification ?",
         )
         save_mb.setStandardButtons(
@@ -93,17 +103,17 @@ class TMWindow(QW.QMainWindow):
 
         QW.QMessageBox(
             QW.QMessageBox.NoIcon,
-            "Test bench",
+            APP_NAME,
             f"File Saved in {self.bench.testbench_path}",
             parent=self,
         ).exec_()
 
     def setup(self):
-        self.setWindowTitle(f"Test bench - Module {self.bench.module.full_name}")
-        self.setFont(get_font(CONF, "codeeditor"))
+        self.setWindowTitle(f"{APP_NAME} - Module {self.bench.module.full_name}")
+        self.setMinimumSize(0, 0)
+        self.setStyleSheet(self.ss_nobg)
         self.setCentralWidget(self.central_widget)
         self.signals.benchLoaded.emit()
-
         self.connect_test_actions()
 
     def show(self):
