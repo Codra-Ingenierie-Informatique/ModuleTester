@@ -1,5 +1,6 @@
 # PyTestBench Releases #
 
-## Version 1.0.0 ##
+## Version 0.1.0 ##
 
-First release of PyTestBench.
+This is an experimental release of PyTestBench. It is not yet ready for
+production use.
