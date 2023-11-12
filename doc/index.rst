@@ -3,7 +3,7 @@ ModuleTester User Guide
 
 ModuleTester is a library for executing and managing Python package tests.
 
-.. figure:: images/ModuleTester-banner.png
+.. figure:: _static/ModuleTester-banner.png
     :align: center
 
 ModuleTester is a spin-off of the `DataLab`_ project, mainly used to test
