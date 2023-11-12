@@ -1,5 +1,5 @@
 ModuleTester User Guide
-======================
+=======================
 
 ModuleTester is a library for executing and managing Python package tests.
 
