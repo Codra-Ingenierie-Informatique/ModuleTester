@@ -11,9 +11,9 @@
 # Tree
 
 ```sh
-pytestbench
+moduletester
 |   exporter.py
-|   bench.py
+|   manager.py
 |   model.py
 |   python_helpers.py
 |   serializer.py
@@ -32,8 +32,8 @@ pytestbench
 |   |   |   tool_bar_component.py
 |   |
 |   +---states
-|   |   |   bench_signals.py
-|   |   |   bench_state_machine.py
+|   |   |   signals.py
+|   |   |   state_machine.py
 |   |   |   runner.py
 |   |
 |   +---widgets
@@ -51,7 +51,7 @@ pytestbench
 # Command Line
 
 ```sh
-python -m pytestbench.bench -h
+python -m moduletester.manager -h
 ```
 
 # Doc
@@ -62,14 +62,14 @@ python -m pytestbench.bench -h
 
 All functions to export files from TestSuite to rst files
 
-### bench.py
+### manager.py
 
-Main class for the pytestbench. Manage the test_suite. Not serialized.
+Main class for the moduletester. Manage the test_suite. Not serialized.
 Contains the definition of the command lines
 
 ### model.py
 
-Contains the different dataclasses used by the TestBench.
+Contains the different dataclasses used by the TestManager.
 
 ### python_helpers.py
 
@@ -77,17 +77,17 @@ Contains helpers function for python
 
 ### serializer.py
 
-Contains classes and functions to serialize the test suite to a .testbench file.
+Contains classes and functions to serialize the test suite to a .moduletester file.
 
 ## gui
 
 ### window.py
 
-Main window of the pytestbench.
+Main window of the moduletester.
 
 ### main.py
 
-Main class for the graphical pytestbench
+Main class for the graphical moduletester
 
 ## gui.components
 
@@ -115,11 +115,11 @@ Defines the action in the toolbar as well as the toolbar component itself
 
 ## gui.states
 
-### bench_signals.py
+### signals.py
 
 Defines custom signals used in the gui
 
-### bench_state_machine.py
+### state_machine.py
 
 Defines the state_machine used in the gui as well as the transitions between states
 

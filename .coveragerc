@@ -9,7 +9,7 @@ parallel = True
 concurrency = multiprocessing,thread
 
 omit =
-    */pytestbench/tests/*
+    */moduletester/tests/*
     */guidata/*
 
     #--- Workaround for certain builds of python-opencv package:

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=ModuleTester
+GenericName=ModuleTester
+Comment=Run ModuleTester, the Python module tester software
+TryExec=ModuleTester
+Exec=ModuleTester
+Icon=ModuleTester.svg
+Categories=Education;Science;Physics;

@@ -1,0 +1,7 @@
+[ ]  Synchronize HMI with .moduletester file after code modification @HMI
+[ ]  Compare code with .moduletester file (test added or deleted) @model
+[ ]  Manage Test.is_valid() @model
+[ ]  Force save .moduletester file @model
+[ ]  Atomic write of files (backup/swap) and directories @model
+
+[ ]  Are args and timeout editable directly in the test manager window @HMI

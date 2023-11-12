@@ -37,7 +37,7 @@
     "esbonio.sphinx.confDir": "${workspaceFolder}\\doc",
     "python.analysis.autoFormatStrings": true,
     "python.testing.pytestArgs": [
-        "pytestbench"
+        "moduletester"
     ],
     "python.testing.unittestEnabled": false,
     "python.testing.pytestEnabled": true,

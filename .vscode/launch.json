@@ -5,10 +5,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Run PyTestBench",
+            "name": "Run ModuleTester",
             "type": "python",
             "request": "launch",
-            "module": "pytestbench.gui.main",
+            "module": "moduletester.gui.main",
             "console": "integratedTerminal",
             "envFile": "${workspaceFolder}/.env",
             "justMyCode": false,

@@ -7,15 +7,15 @@ import sys
 
 sys.path.insert(0, os.path.abspath(".."))
 
-import pytestbench  # noqa: E402
+import moduletester  # noqa: E402
 
 # -- Project information -----------------------------------------------------
 
-project = "PyTestBench"
+project = "ModuleTester"
 author = "Pierre Raybaut"
 copyright = "2023, Codra - " + author
-html_logo = latex_logo = "_static/PyTestBench-title.png"
-release = pytestbench.__version__
+html_logo = latex_logo = "_static/ModuleTester-title.png"
+release = moduletester.__version__
 
 # -- General configuration ---------------------------------------------------
 

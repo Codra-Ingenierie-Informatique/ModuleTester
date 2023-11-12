@@ -1,12 +1,12 @@
-PyTestBench User Guide
+ModuleTester User Guide
 ======================
 
-PyTestBench is a library for executing and managing Python package tests.
+ModuleTester is a library for executing and managing Python package tests.
 
-.. figure:: images/PyTestBench-banner.png
+.. figure:: images/ModuleTester-banner.png
     :align: center
 
-PyTestBench is a spin-off of the `DataLab`_ project, mainly used to test
+ModuleTester is a spin-off of the `DataLab`_ project, mainly used to test
 `PlotPyStack`_ libraries.
 
 .. _DataLab: https://codra-ingenierie-informatique.github.io/DataLab/
@@ -15,7 +15,7 @@ PyTestBench is a spin-off of the `DataLab`_ project, mainly used to test
 .. figure:: _static/plotpy-stack-powered.png
     :align: center
 
-    PyTestBench is powered by `PlotPyStack`_
+    ModuleTester is powered by `PlotPyStack`_
 
 External resources:
     .. list-table::
@@ -42,7 +42,7 @@ Copyrights and licensing
 
 .. _PlotPyStack: https://github.com/PlotPyStack
 .. _guidata: https://pypi.python.org/pypi/guidata
-.. _PyPI: https://pypi.python.org/pypi/PyTestBench
-.. _GitHub: https://github.com/Codra-Ingenierie-Informatique/PyTestBench
+.. _PyPI: https://pypi.python.org/pypi/ModuleTester
+.. _GitHub: https://github.com/Codra-Ingenierie-Informatique/ModuleTester
 .. _Codra: https://codra.net/
 .. _BSD 3-Clause: https://github.com/Codra-Ingenierie-Informatique/DataLab/blob/master/LICENSE

@@ -1,7 +1,0 @@
-[ ]  Synchronize HMI with .testbench file after code modification @HMI
-[ ]  Compare code with .testbench file (test added or deleted) @model
-[ ]  Manage Test.is_valid() @model
-[ ]  Force save .testbench file @model
-[ ]  Atomic write of files (backup/swap) and directories @model
-
-[ ]  Are args and timeout editable directly in the test bench window @HMI

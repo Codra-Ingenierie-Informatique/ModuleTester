@@ -4,9 +4,9 @@ Example
 .. figure:: images/shots/empty.png
    :align: center
 
-   Running PyTestBench lead to an empty window
+   Running ModuleTester lead to an empty window
 
-.. figure:: images/shots/guidata.testbench.png
+.. figure:: images/shots/guidata.moduletester.png
    :align: center
 
-   Using PyTestBench on `guidata` Python package
+   Using ModuleTester on `guidata` Python package

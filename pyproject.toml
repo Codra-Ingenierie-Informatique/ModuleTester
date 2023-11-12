@@ -1,13 +1,13 @@
-# PyTestBench setup configuration file
+# ModuleTester setup configuration file
 
 [build-system]
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "PyTestBench"
+name = "ModuleTester"
 authors = [{ name = "Codra", email = "p.raybaut@codra.fr" }]
-description = "PyTestBench is a test management software for Python packages"
+description = "ModuleTester is a test management software for Python packages"
 readme = "README.md"
 license = { file = "LICENSE" }
 classifiers = [
@@ -30,20 +30,20 @@ dependencies = ["guidata >= 3.1", "QtPy >= 1.9", "beautifulsoup4"]
 dynamic = ["version"]
 
 [project.scripts]
-bench = "pytestbench.bench:cli"
+moduletester-cli = "moduletester.manager:cli"
 
 [project.gui-scripts]
-PyTestBench = "pytestbench.gui:run"
+moduletester = "moduletester.gui:run"
 
 [project.optional-dependencies]
 dev = ["black", "isort", "pylint", "Coverage"]
 doc = ["PyQt5", "sphinx>6", "python-docs-theme"]
 
 [tool.setuptools.packages.find]
-include = ["pytestbench*"]
+include = ["moduletester*"]
 
 [tool.setuptools.package-data]
 "*" = ["*.svg", "*.mo", "*.txt", "*.json"]
 
 [tool.setuptools.dynamic]
-version = { attr = "pytestbench.__version__" }
+version = { attr = "moduletester.__version__" }

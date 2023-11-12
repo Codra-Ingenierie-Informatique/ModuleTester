@@ -1,18 +1,18 @@
 set INKSCAPE_PATH="C:\Program Files\Inkscape\bin\inkscape.exe"
 
 @REM Deploying images and icons
-copy PyTestBench.svg ..\pytestbench\data\logo
-%INKSCAPE_PATH% "PyTestBench-Title.svg" -o "PyTestBench-Title.png" -w 190
-copy PyTestBench-Title.png ..\doc\_static
-%INKSCAPE_PATH% "PyTestBench-Watermark.svg" -o "..\pytestbench\data\logo\PyTestBench-Watermark.png" -w 300
-%INKSCAPE_PATH% "PyTestBench-Banner.svg" -o "PyTestBench-Banner.png" -w 364
-copy PyTestBench-Banner.png ..\doc\_static
+copy ModuleTester.svg ..\moduletester\data\logo
+%INKSCAPE_PATH% "ModuleTester-Title.svg" -o "ModuleTester-Title.png" -w 190
+copy ModuleTester-Title.png ..\doc\_static
+%INKSCAPE_PATH% "ModuleTester-Watermark.svg" -o "..\moduletester\data\logo\ModuleTester-Watermark.png" -w 300
+%INKSCAPE_PATH% "ModuleTester-Banner.svg" -o "ModuleTester-Banner.png" -w 364
+copy ModuleTester-Banner.png ..\doc\_static
 
 @REM Generating icon
 for %%s in (16 24 32 48 128 256) do (
-  %INKSCAPE_PATH% "PyTestBench.svg" -o "tmp-%%s.png" -w %%s -h %%s
+  %INKSCAPE_PATH% "ModuleTester.svg" -o "tmp-%%s.png" -w %%s -h %%s
 )
-magick convert "tmp-*.png" "PyTestBench.ico"
+magick convert "tmp-*.png" "ModuleTester.ico"
 del "tmp-*.png"
 
 @REM Generating images for NSIS installer

@@ -1,13 +1,13 @@
-![PyTestBench](https://raw.githubusercontent.com/Codra-Ingenierie-Informatique/PyTestBench/main/doc/_static/PyTestBench-banner.png)
+![ModuleTester](https://raw.githubusercontent.com/Codra-Ingenierie-Informatique/ModuleTester/main/doc/_static/ModuleTester-banner.png)
 
-[![license](https://img.shields.io/pypi/l/PyTestBench.svg)](./LICENSE)
-[![pypi version](https://img.shields.io/pypi/v/PyTestBench.svg)](https://pypi.org/project/PyTestBench/)
-[![PyPI status](https://img.shields.io/pypi/status/PyTestBench.svg)](https://github.com/Codra-Ingenierie-Informatique/PyTestBench)
-[![PyPI pyversions](https://img.shields.io/pypi/pyversions/PyTestBench.svg)](https://pypi.python.org/pypi/PyTestBench/)
+[![license](https://img.shields.io/pypi/l/ModuleTester.svg)](./LICENSE)
+[![pypi version](https://img.shields.io/pypi/v/ModuleTester.svg)](https://pypi.org/project/ModuleTester/)
+[![PyPI status](https://img.shields.io/pypi/status/ModuleTester.svg)](https://github.com/Codra-Ingenierie-Informatique/ModuleTester)
+[![PyPI pyversions](https://img.shields.io/pypi/pyversions/ModuleTester.svg)](https://pypi.python.org/pypi/ModuleTester/)
 
-ℹ️ Created by [Codra](https://codra.net/)/[Pierre Raybaut](https://github.com/PierreRaybaut) in 2023, developed and maintained by PyTestBench open-source project team.
+ℹ️ Created by [Codra](https://codra.net/)/[Pierre Raybaut](https://github.com/PierreRaybaut) in 2023, developed and maintained by ModuleTester open-source project team.
 
-ℹ️ PyTestBench is powered by [PlotPyStack](https://github.com/PlotPyStack) 🚀.
+ℹ️ ModuleTester is powered by [PlotPyStack](https://github.com/PlotPyStack) 🚀.
 
 ![PlotPyStack](https://raw.githubusercontent.com/PlotPyStack/.github/main/data/plotpy-stack-powered.png)
 
@@ -15,19 +15,19 @@
 
 ## Overview
 
-PyTestBench is a Python package providing a GUI to manage and run tests.
+ModuleTester is a Python package providing a GUI to manage and run tests.
 
-PyTestBench is a spin-off of the [DataLab](https://github.com/Codra-Ingenierie-Informatique/DataLab),
+ModuleTester is a spin-off of the [DataLab](https://github.com/Codra-Ingenierie-Informatique/DataLab),
 mainly used to test [PlotPyStack](https://github.com/PlotPyStack) libraries
 and [DataLab](https://github.com/Codra-Ingenierie-Informatique/DataLab) itself.
 
-![PyTestBench](https://raw.githubusercontent.com/Codra-Ingenierie-Informatique/PyTestBench/main/doc/images/shots/empty.png)
+![ModuleTester](https://raw.githubusercontent.com/Codra-Ingenierie-Informatique/ModuleTester/main/doc/images/shots/empty.png)
 
 ## Example
 
-Using PyTestBench on `guidata` Python package:
+Using ModuleTester on `guidata` Python package:
 
-![PyTestBench](https://raw.githubusercontent.com/Codra-Ingenierie-Informatique/PyTestBench/main/doc/images/shots/guidata.testbench.png)
+![ModuleTester](https://raw.githubusercontent.com/Codra-Ingenierie-Informatique/ModuleTester/main/doc/images/shots/guidata.moduletester.png)
 
 ### Credits
 
@@ -38,5 +38,5 @@ Copyrights and licensing:
 
 ### Dependencies and other installation methods
 
-See [Installation](https://PyTestBench.readthedocs.io/en/latest/installation.html)
+See [Installation](https://ModuleTester.readthedocs.io/en/latest/installation.html)
 section in the documentation for more details.
