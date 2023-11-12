@@ -37,7 +37,7 @@ moduletester = "moduletester.gui:run"
 
 [project.optional-dependencies]
 dev = ["black", "isort", "pylint", "Coverage"]
-doc = ["PyQt5", "sphinx>6", "python-docs-theme"]
+doc = ["PyQt5", "sphinx>6", "pydata_sphinx_theme"]
 
 [tool.setuptools.packages.find]
 include = ["moduletester*"]

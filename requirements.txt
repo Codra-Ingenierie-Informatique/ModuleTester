@@ -6,6 +6,6 @@ coverage
 pycodestyle
 pyinstaller
 sphinx
-python-docs-theme
+pydata_sphinx_theme
 build
 twine
