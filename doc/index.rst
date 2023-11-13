@@ -37,7 +37,7 @@ External resources:
 Copyrights and licensing
 ------------------------
 
-- Copyright © 2023 `Codra`_, Pierre Raybaut
+- Copyright © 2023 `Codra`_
 - Licensed under the terms of the `BSD 3-Clause`_
 
 .. _PlotPyStack: https://github.com/PlotPyStack

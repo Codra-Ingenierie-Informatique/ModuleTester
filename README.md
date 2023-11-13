@@ -5,7 +5,7 @@
 [![PyPI status](https://img.shields.io/pypi/status/ModuleTester.svg)](https://github.com/Codra-Ingenierie-Informatique/ModuleTester)
 [![PyPI pyversions](https://img.shields.io/pypi/pyversions/ModuleTester.svg)](https://pypi.python.org/pypi/ModuleTester/)
 
-ℹ️ Created by [Codra](https://codra.net/)/[Pierre Raybaut](https://github.com/PierreRaybaut) in 2023, developed and maintained by ModuleTester open-source project team.
+ℹ️ Created by [Codra](https://codra.net/) (Pierre Bouchaudon, Pedro Rodriguez, and [Pierre Raybaut](https://github.com/PierreRaybaut)) in 2023, developed and maintained by ModuleTester open-source project team.
 
 ℹ️ ModuleTester is powered by [PlotPyStack](https://github.com/PlotPyStack) 🚀.
 
@@ -36,7 +36,7 @@ Using ModuleTester on `guidata` Python package:
 
 Copyrights and licensing:
 
-* Copyright © 2023 [Codra](https://codra.net/), [Pierre Raybaut](https://github.com/PierreRaybaut).
+* Copyright © 2023 [Codra](https://codra.net/).
 * Licensed under the terms of the BSD 3-Clause (see [LICENSE](LICENSE)).
 
 ## Dependencies and other installation methods
