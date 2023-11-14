@@ -29,6 +29,10 @@ requires-python = ">=3.8, <4"
 dependencies = ["guidata >= 3.1", "QtPy >= 1.9", "beautifulsoup4"]
 dynamic = ["version"]
 
+[project.urls]
+Homepage = "https://github.com/Codra-Ingenierie-Informatique/ModuleTester/"
+Documentation = "https://moduletester.readthedocs.io/en/latest/"
+
 [project.scripts]
 moduletester-cli = "moduletester.manager:cli"
 
