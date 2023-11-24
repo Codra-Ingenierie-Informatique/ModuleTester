@@ -14,8 +14,10 @@ ModuleTester is a spin-off of the `DataLab`_ project, mainly used to test
 
 .. figure:: _static/plotpy-stack-powered.png
     :align: center
+    :width: 300 px
 
-    ModuleTester is powered by `PlotPyStack`_
+    ModuleTester is powered by `PlotPyStack <https://github.com/PlotPyStack>`_,
+    the Python-Qt visualization and scientific graphical user interface stack.
 
 External resources:
     .. list-table::
