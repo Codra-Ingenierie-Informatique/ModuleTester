@@ -17,7 +17,11 @@ ModuleTester is a spin-off of the `DataLab`_ project, mainly used to test
     :width: 300 px
 
     ModuleTester is powered by `PlotPyStack <https://github.com/PlotPyStack>`_,
-    the Python-Qt visualization and scientific graphical user interface stack.
+    the scientific Python-Qt visualization and graphical user interface stack.
+
+.. note:: ModuleTester was created by `Codra`_ in 2023. It is developed and
+          maintained by ModuleTester open-source project team
+          with the support of `Codra`_.
 
 External resources:
     .. list-table::

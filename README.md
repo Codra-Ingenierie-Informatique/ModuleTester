@@ -5,7 +5,7 @@
 [![PyPI status](https://img.shields.io/pypi/status/ModuleTester.svg)](https://github.com/Codra-Ingenierie-Informatique/ModuleTester)
 [![PyPI pyversions](https://img.shields.io/pypi/pyversions/ModuleTester.svg)](https://pypi.python.org/pypi/ModuleTester/)
 
-ℹ️ Created by [Codra](https://codra.net/) (Pierre Bouchaudon, Pedro Rodriguez, and [Pierre Raybaut](https://github.com/PierreRaybaut)) in 2023, developed and maintained by ModuleTester open-source project team.
+ℹ️ Created by [Codra](https://codra.net/) (Pierre Bouchaudon, Pedro Rodriguez, and [Pierre Raybaut](https://github.com/PierreRaybaut)) in 2023, developed and maintained by ModuleTester open-source project team with the support of [Codra](https://codra.net/).
 
 ℹ️ ModuleTester is powered by [PlotPyStack](https://github.com/PlotPyStack) 🚀.
 
