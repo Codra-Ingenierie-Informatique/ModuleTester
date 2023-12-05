@@ -23,7 +23,9 @@ and [DataLab](https://github.com/Codra-Ingenierie-Informatique/DataLab) itself.
 
 ![ModuleTester](https://raw.githubusercontent.com/Codra-Ingenierie-Informatique/ModuleTester/main/doc/images/shots/empty.png)
 
-See [documentation](https://moduletester.readthedocs.io/en/latest/) for more details on
+
+See [home page](https://github.com/Codra-Ingenierie-Informatique/ModuleTester/) and
+[documentation](https://moduletester.readthedocs.io/en/latest/) for more details on
 the library and [changelog](https://github.com/Codra-Ingenierie-Informatique/ModuleTester/blob/main/CHANGELOG.md) for recent history of changes.
 
 ## Example
