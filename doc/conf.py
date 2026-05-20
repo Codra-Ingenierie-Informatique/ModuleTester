@@ -13,13 +13,18 @@ import moduletester  # noqa: E402
 
 project = "ModuleTester"
 author = "Pierre Raybaut"
-copyright = "2023, Codra - " + author
+copyright = "2023-2026, Codra - " + author
 html_logo = latex_logo = "_static/ModuleTester-title.png"
 release = moduletester.__version__
 
 # -- General configuration ---------------------------------------------------
 
-extensions = ["sphinx.ext.intersphinx", "sphinx.ext.napoleon", "sphinx.ext.mathjax"]
+extensions = [
+    "sphinx.ext.autodoc",
+    "sphinx.ext.intersphinx",
+    "sphinx.ext.napoleon",
+    "sphinx.ext.mathjax",
+]
 templates_path = ["_templates"]
 exclude_patterns = []
 
