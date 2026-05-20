@@ -1,3 +1,5 @@
+"""Test results and test list document generation."""
+
 from __future__ import annotations
 
 from dataclasses import dataclass, field
@@ -48,6 +50,7 @@ class _TestExporter(DocumentExporter):
         JINJA_ENV.loader = new_template_loader
 
     def get_images_paths(self, test: Test) -> list[str]:
+        """Return the image paths for a given test."""
         if self.test_suite is None:
             return []
         return test.get_images(self._image_dirs)
@@ -55,9 +58,13 @@ class _TestExporter(DocumentExporter):
 
 @dataclass
 class TestResultsDocument(_TestExporter):
+    """Exporter for test results documents."""
+
     template_name: str = "test_results_template.j2"
 
 
 @dataclass
 class TestListDocument(_TestExporter):
+    """Exporter for test list documents."""
+
     template_name: str = "test_list_template.j2"

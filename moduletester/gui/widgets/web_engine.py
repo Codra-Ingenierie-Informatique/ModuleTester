@@ -1,3 +1,5 @@
+"""Web engine widget for HTML content display."""
+
 from __future__ import annotations
 
 from typing import Optional
@@ -45,7 +47,7 @@ class SimpleWebViewer(QWEB.QWebEngineView):  # type: ignore
     def __init__(
         self,
         *args,
-        web_actions: Optional[list[QAction | QWEB.QWebEnginePage.WebAction]] = None,  # type: ignore
+        web_actions: Optional[list[QAction | QWEB.QWebEnginePage.WebAction]] = None,
     ):
         super().__init__(*args)
         self.protect_settings()

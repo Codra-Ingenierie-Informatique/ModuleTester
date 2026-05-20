@@ -1,3 +1,5 @@
+"""Jinja2-based document exporter for test results and test lists."""
+
 from __future__ import annotations
 
 import os
@@ -302,4 +304,5 @@ class DocumentExporter(ABC):
 
     @classmethod
     def load_template(cls) -> None:
+        """Load the Jinja2 template from the configured directory."""
         cls._template = JINJA_ENV.get_template(cls.template_name)

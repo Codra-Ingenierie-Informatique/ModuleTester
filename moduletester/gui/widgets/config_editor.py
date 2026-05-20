@@ -1,3 +1,5 @@
+"""Configuration editor widget."""
+
 from __future__ import annotations
 
 import os
@@ -11,6 +13,8 @@ from moduletester.gui.widgets.editor_widget import Editor
 
 
 class ConfigEditor(Editor):
+    """Widget for editing ModuleTester configuration files."""
+
     def __init__(
         self,
         parent: QWidget | None,

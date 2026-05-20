@@ -1,3 +1,5 @@
+"""QDockWidget wrapper for dockable widgets."""
+
 from __future__ import annotations
 
 from typing import Generic, Optional, TypeVar
@@ -18,6 +20,8 @@ AnyDockableWidget = TypeVar("AnyDockableWidget", bound=DockableQWidget)
 
 
 class QDockWrapper(QW.QDockWidget, Generic[AnyDockableWidget]):
+    """QDockWidget wrapper for dockable widgets."""
+
     def __init__(
         self,
         parent: Optional[QW.QWidget],

@@ -1,5 +1,6 @@
 """Tests for the serializer module."""
 
+# pylint: disable=missing-class-docstring,missing-function-docstring
 from __future__ import annotations
 
 from datetime import datetime, timedelta

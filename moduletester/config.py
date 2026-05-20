@@ -1,3 +1,5 @@
+"""Configuration management for ModuleTester."""
+
 from __future__ import annotations
 
 import configparser
@@ -153,7 +155,8 @@ def _load_conf(config: configparser.ConfigParser, resolve=False) -> None:
         resolve: If True, tries to resolve conflicts in the configuration
     """
     for section_name, section_obj in PACKAGE_CONF.items():
-        section_values: configparser.SectionProxy = config.setdefault(section_name, {})  # type: ignore
+        # type: ignore
+        section_values: configparser.SectionProxy = config.setdefault(section_name, {})
         missing_args, extra_args = _check_section(section_obj, **section_values)
         if len(missing_args) > 0 or len(extra_args) > 0:
             if resolve:
@@ -261,15 +264,19 @@ class ExporterConf:
         self.export_fmts = export_fmts
 
     def get_template_dir(self) -> str:
+        """Return the absolute path to the template directory."""
         return os.path.join(MODULETESTER_CONFIG_DIR, self.template_dir)
 
     def get_docx_ref(self) -> str:
+        """Return the path to the DOCX reference template."""
         return osp.join(self.template_dir, self.docx_reference)
 
     def get_odt_ref(self) -> str:
+        """Return the path to the ODT reference template."""
         return osp.join(self.template_dir, self.odt_reference)
 
     def get_css_style(self) -> str:
+        """Return the path to the CSS style file."""
         return osp.join(self.template_dir, self.css_style)
 
     def _to_abs_path(self, relative_path: str) -> str:
@@ -367,6 +374,7 @@ def conf_obj_to_str(conf: ConfModel) -> str:
 
 
 def save_config(conf: ConfModel, filename: str) -> None:
+    """Save configuration to file."""
     global PACKAGE_CONF
     PACKAGE_CONF.update(conf)
     with open(filename, "w") as f:
@@ -374,5 +382,6 @@ def save_config(conf: ConfModel, filename: str) -> None:
 
 
 def reset_config(self):
+    """Reset configuration to defaults."""
     global PACKAGE_CONF
     PACKAGE_CONF.update(new_config())

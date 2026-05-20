@@ -209,7 +209,7 @@ class ResultEnum(Enum):
         obj.icon_path = get_image_file_path(icon_name or "")
         return obj
 
-    def __init__(self, label: str, __ignored=None) -> None: ...
+    def __init__(self, _label: str, __ignored=None) -> None: ...
 
     """Fake init method used to get the correct linting/auto-completion."""
 

@@ -214,7 +214,7 @@ class TMWidget(DockableQWidget):
             self.test_list.update_result(test)
             self.signals.SIG_PROJECT_MODIFIED.emit()
 
-    def update_result(self, index: int):
+    def update_result(self, _index: int):
         """Update the result for the test.
 
         Args:

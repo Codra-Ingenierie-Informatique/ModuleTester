@@ -1,3 +1,5 @@
+"""Spinner configurator widget."""
+
 # noqa
 import math
 import sys
@@ -23,6 +25,8 @@ from .spinner import WaitingSpinner
 
 # pylint: disable=too-many-instance-attributes,too-many-statements
 class SpinnerConfigurator(QWidget):
+    """Interactive configurator for the WaitingSpinner widget."""
+
     sb_roundness = None
     sb_opacity = None
     sb_fadeperc = None
@@ -204,6 +208,7 @@ class SpinnerConfigurator(QWidget):
 
 
 def main():
+    """Launch the spinner configurator application."""
     app = QApplication(sys.argv)
     configurator = SpinnerConfigurator()  # noqa
     sys.exit(app.exec())

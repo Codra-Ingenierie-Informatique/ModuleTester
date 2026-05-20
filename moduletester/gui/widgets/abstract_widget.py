@@ -1,3 +1,5 @@
+"""Abstract base widget classes."""
+
 from abc import ABC, ABCMeta
 
 import qtpy.QtWidgets as QW

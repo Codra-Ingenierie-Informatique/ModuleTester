@@ -1,3 +1,5 @@
+"""Toolbox widget for collapsible sections."""
+
 from __future__ import annotations
 
 from PyQt5.QtWidgets import QWidget

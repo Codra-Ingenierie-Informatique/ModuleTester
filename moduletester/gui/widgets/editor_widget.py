@@ -1,3 +1,5 @@
+"""Text editor widget with save/close support."""
+
 from __future__ import annotations
 
 from abc import ABC
@@ -15,6 +17,8 @@ from moduletester.gui.widgets.dockable_widget import DockableQWidget
 
 
 class DialogEditor(codeeditor.CodeEditor):
+    """Code editor with save and content sync signals."""
+
     sig_update_content = QC.Signal()  # type: ignore
     sig_save_key = QC.Signal()  # type: ignore
 
@@ -30,11 +34,13 @@ class DialogEditor(codeeditor.CodeEditor):
         self.content_is_synched = True
 
     def closeEvent(self, event: QCloseEvent) -> None:  # type: ignore # noqa: N802
+        """Handle close event, emitting update signal if content changed."""
         if not self.content_is_synched:
             self.sig_update_content.emit()
         super().closeEvent(event)
 
     def keyPressEvent(self, event: QG.QKeyEvent):  # type: ignore  # noqa: N802
+        """Handle key press, detecting Ctrl+S for save."""
         super().keyPressEvent(event)
         if (
             event.modifiers() == QC.Qt.ControlModifier
