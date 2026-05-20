@@ -10,7 +10,6 @@ from guidata.dataset.dataitems import StringItem
 from guidata.dataset.qtwidgets import DataSetEditGroupBox
 from qtpy import QtWidgets as QW
 
-from moduletester.config import _
 from moduletester.gui.widgets.dockable_widget import DockableQWidget
 from moduletester.model import ResultEnum, Test
 

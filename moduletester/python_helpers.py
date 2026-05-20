@@ -6,7 +6,7 @@ import subprocess
 import sys
 from dataclasses import fields, is_dataclass
 from itertools import zip_longest
-from typing import Any, Dict, Generator, List, Protocol, Tuple, overload
+from typing import Any, Dict, Generator, List, Protocol, Tuple
 
 from bs4 import BeautifulSoup
 
@@ -118,10 +118,7 @@ def setup_sphinx(
         try:
             outs, errs = proc.communicate(timeout=0.5)
             print(
-                (
-                    f"[STDOUT] > {outs.decode('utf-8')}"
-                    f"[STDERR] > {errs.decode('utf-8')}"
-                )
+                (f"[STDOUT] > {outs.decode('utf-8')}[STDERR] > {errs.decode('utf-8')}")
             )
         except subprocess.TimeoutExpired:
             pass

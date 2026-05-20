@@ -5,11 +5,9 @@
 
 from typing import Optional
 
-from guidata.qthelpers import get_std_icon  # type: ignore
 from qtpy import QtWidgets as QW
 from qtpy.QtWebEngineWidgets import QWebEnginePage  # type: ignore
 
-from moduletester.gui.states.signals import TMSignals
 from moduletester.gui.widgets.web_engine import SimpleWebViewer
 from moduletester.model import Test
 

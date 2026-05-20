@@ -1,8 +1,8 @@
 """Tests for the model module (enums, dataclasses)."""
+
 from __future__ import annotations
 
 from datetime import datetime, timedelta
-from io import StringIO
 
 from moduletester.model import (
     ModuleNotFoundType,

@@ -1,13 +1,11 @@
 """Tests for the serializer module."""
+
 from __future__ import annotations
 
-import json
 from datetime import datetime, timedelta
 
 from moduletester.serializer import (
-    DataclassSerializer,
     DateTimeSerializer,
-    ObjectSerializerBase,
     TimedeltaSerializer,
 )
 

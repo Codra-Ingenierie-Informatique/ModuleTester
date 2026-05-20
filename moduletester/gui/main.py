@@ -2,12 +2,10 @@
 # pylint: disable=missing-function-docstring
 
 import argparse
-import sys
 from importlib import import_module
 from typing import Optional
 
 from guidata.qthelpers import qt_app_context
-from qtpy import QtWidgets as QW
 
 from moduletester.gui.states.signals import TMSignals
 from moduletester.gui.states.state_machine import TMStateMachine

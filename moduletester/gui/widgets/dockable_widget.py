@@ -1,10 +1,6 @@
-from abc import ABC, abstractmethod
 from typing import Optional
 
-import qtpy.QtCore as QC
 import qtpy.QtWidgets as QW
-from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QWidget
 
 from moduletester.gui.widgets.abstract_widget import AbstractQWidget
 

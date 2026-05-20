@@ -3,7 +3,6 @@
 
 from typing import Optional
 
-from click import Context
 from guidata.config import CONF
 from guidata.configtools import get_font
 from qtpy import QtCore as QC
@@ -69,25 +68,6 @@ class CLIWidget(DockableQWidget):
             point: Point where the context menu was requested.
         """
         self.menu.exec_(self.command_label.mapToGlobal(point))
-
-    def get_run_options(self, test: Test):
-        """Get the run options for the current test.
-
-        Args:
-            test: Test for which to get the run options.
-
-        Returns:
-            str: The run options for the current test.
-        """
-        ctx = Context(cli)
-        run_params = run.get_params(ctx)
-        run_options = ""
-        for param in run_params:
-            if param.name in test.run_opts:
-                opt_index = test.run_opts.index(param.name)
-                opt_str = f"{param.opts[0]} {test.run_opts[opt_index + 1]} "
-                run_options += opt_str
-        return run_options
 
     def copy_command_line(self):
         """Copy the command line to the clipboard."""

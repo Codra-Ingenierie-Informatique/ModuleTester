@@ -48,7 +48,7 @@ class TMWindow(QW.QMainWindow):
         self.setMinimumSize(800, 480)
 
         font = get_font(CONF, "codeeditor")
-        ffamily, fsize = font.family(), font.pointSize()
+        _ffamily, fsize = font.family(), font.pointSize()
         bgurl = Path(get_image_file_path("ModuleTester-watermark.png")).as_posix()
         # self.ss_nobg = f"QWidget {{ font-family: '{ffamily}'; font-size: {fsize}pt;}}"
         self.ss_nobg = f"QWidget {{ font-size: {fsize}pt;}}"
@@ -130,7 +130,9 @@ class TMWindow(QW.QMainWindow):
         return super().closeEvent(a0)
 
     def save_alert(self):
-        """Display a message box to ask the user if he wants to save the current file."""
+        """
+        Display a message box to ask the user if he wants to save the current file.
+        """
         save_mb = QW.QMessageBox(
             QW.QMessageBox.Warning,
             APP_NAME,
@@ -373,7 +375,6 @@ class TMWindow(QW.QMainWindow):
             == QW.QMessageBox.Apply
         )
         if response:
-
             config.load_package_conf(config_path, resolve=True)
             config.save_config(config.PACKAGE_CONF, config_path)
             print(config_path)
@@ -400,7 +401,8 @@ class TMWindow(QW.QMainWindow):
                     + _("Missing modules:")
                     + f"\n\n{missing_modules_names}\n\n"
                     + _(
-                        "Do you want to reimport all tests and override the current file?"
+                        "Do you want to reimport all tests"
+                        " and override the current file?"
                     )
                 ),
                 buttons=QW.QMessageBox.Ok | QW.QMessageBox.Cancel,
@@ -558,7 +560,6 @@ class TMWindow(QW.QMainWindow):
         if manager.moduletester_path is None:
             self.save_as()
         else:
-
             self.apply_all_changes()
             manager.save()
             self.signals.SIG_FILE_LOADED.emit(manager.moduletester_path)
@@ -625,8 +626,9 @@ class TMWindow(QW.QMainWindow):
                 self,
                 "File already exists.",
                 (
-                    f"The following files aleady exist: {files_str}. \n"
-                    f"File {abs_out_basename} already exists, do you want to overwite it?"
+                    f"The following files already exist: {files_str}.\n"
+                    f"File {abs_out_basename} already exists,"
+                    " do you want to overwrite it?"
                 ),
                 buttons=QW.QMessageBox.Yes | QW.QMessageBox.No,
                 defaultButton=QW.QMessageBox.No,

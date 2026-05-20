@@ -4,6 +4,87 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "🧽 Ruff Formatter",
+            "type": "shell",
+            "command": "${command:python.interpreterPath}",
+            "args": [
+                "scripts/run_with_env.py",
+                "${command:python.interpreterPath}",
+                "-m",
+                "ruff",
+                "format",
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "statusbar": {
+                    "hide": true,
+                },
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true,
+            },
+            "presentation": {
+                "clear": true,
+                "echo": true,
+                "focus": false,
+                "panel": "dedicated",
+                "reveal": "always",
+                "showReuseMessage": true,
+            },
+        },
+        {
+            "label": "🔦 Ruff Linter",
+            "type": "shell",
+            "command": "${command:python.interpreterPath}",
+            "args": [
+                "scripts/run_with_env.py",
+                "${command:python.interpreterPath}",
+                "-m",
+                "ruff",
+                "check",
+                "--fix",
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "statusbar": {
+                    "hide": true,
+                },
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true,
+            },
+            "presentation": {
+                "clear": true,
+                "echo": true,
+                "focus": false,
+                "panel": "dedicated",
+                "reveal": "always",
+                "showReuseMessage": true,
+            },
+        },
+        {
+            "label": "🧽🔦 Ruff",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "🧽 Ruff Formatter",
+                "🔦 Ruff Linter",
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false,
+            },
+            "presentation": {
+                "clear": true,
+                "echo": true,
+                "focus": false,
+                "panel": "dedicated",
+                "reveal": "always",
+                "showReuseMessage": true,
+            },
+        },
+        {
             "label": "🔎 gettext - Scan",
             "type": "shell",
             "command": "${command:python.interpreterPath}",

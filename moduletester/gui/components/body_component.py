@@ -178,7 +178,6 @@ class TMWidget(DockableQWidget):
             and selected_test is not None
             and self.validate_command(selected_test)
         ):
-
             self.set_item(is_test_modified=False)
             self.run_test()
 

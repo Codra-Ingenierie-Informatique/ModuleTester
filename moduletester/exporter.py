@@ -30,9 +30,8 @@ class TestExporter:
         images, substitutes = self.export_images(test_images)
 
         title = f"\t{title:<{self.padding}}"
-        description = (
-            f"  .. include:: {desc_path}\n\t{' ' * (self.padding+2)}\t:parser: rst\n\n"
-        )
+        pad = " " * (self.padding + 2)
+        description = f"  .. include:: {desc_path}\n\t{pad}\t:parser: rst\n\n"
 
         template = "".join([title, description, *images])
 

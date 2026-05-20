@@ -1,13 +1,11 @@
 # pylint: disable=missing-class-docstring, missing-module-docstring
 # pylint: disable=missing-function-docstring
-from typing import Optional
 
 from qtpy import QtCore as QC
 from qtpy import QtGui as QG
 from qtpy import QtWidgets as QW
 
 from moduletester.gui.states.signals import TMSignals
-from moduletester.gui.widgets.dockable_widget import DockableQWidget
 from moduletester.gui.widgets.tab_image_widget import TabImageWidget
 from moduletester.gui.widgets.test_description_widget import TestDescriptionWidget
 from moduletester.gui.widgets.test_prop_widget import TestProps
@@ -126,7 +124,9 @@ class TestInformation(QW.QWidget):
             QW.QMessageBox(
                 QW.QMessageBox.NoIcon,
                 "Command Error",
-                "The following error occured while parsing the command "
-                f"line arguments:\n\n\t{str(e)}\n\nPlease check the command line arguments.",
+                "The following error occured while parsing the "
+                "command line arguments:"
+                f"\n\n\t{str(e)}\n\n"
+                "Please check the command line arguments.",
             ).exec()
             return False

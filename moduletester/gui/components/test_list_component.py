@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from typing import Optional
 
-import qtpy.QtCore as QC
 import qtpy.QtWidgets as QW
 from guidata.configtools import get_icon
 

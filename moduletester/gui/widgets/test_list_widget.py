@@ -12,7 +12,6 @@ from qtpy import QtCore as QC
 from qtpy import QtGui as QG
 from qtpy import QtWidgets as QW
 
-from moduletester.config import _
 from moduletester.gui.external.pyqtspinner import WaitingSpinner
 from moduletester.model import (
     ModuleErrorType,

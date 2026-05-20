@@ -43,7 +43,9 @@ class SimpleWebViewer(QWEB.QWebEngineView):  # type: ignore
     """
 
     def __init__(
-        self, *args, web_actions: Optional[list[QAction | QWEB.QWebEnginePage.WebAction]] = None  # type: ignore
+        self,
+        *args,
+        web_actions: Optional[list[QAction | QWEB.QWebEnginePage.WebAction]] = None,  # type: ignore
     ):
         super().__init__(*args)
         self.protect_settings()
@@ -101,7 +103,8 @@ class SimpleWebViewer(QWEB.QWebEngineView):  # type: ignore
         self.page().profile().setUrlRequestInterceptor(UrlBloquer(self))
 
     def setup_menu(
-        self, web_actions: list[QWEB.QWebEnginePage.WebAction]  # type: ignore
+        self,
+        web_actions: list[QWEB.QWebEnginePage.WebAction],  # type: ignore
     ) -> QMenu:
         """Setup the context menu.
 

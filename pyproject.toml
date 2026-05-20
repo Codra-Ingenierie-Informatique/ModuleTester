@@ -31,7 +31,6 @@ requires-python = ">=3.9, <4"
 dependencies = [
     "guidata >= 3.14",
     "QtPy >= 1.9",
-    "click",
     "pyqtwebengine",
     "pypandoc",
     "jinja2",
@@ -49,7 +48,7 @@ moduletester-cli = "moduletester.manager:cli"
 moduletester = "moduletester.gui.main:run_gui"
 
 [project.optional-dependencies]
-dev = ["black", "isort", "pylint", "pytest", "Coverage", "build"]
+dev = ["ruff", "pylint", "pytest", "Coverage", "build"]
 doc = ["PyQt5", "sphinx>6", "pydata_sphinx_theme"]
 
 [tool.setuptools.packages.find]
@@ -73,3 +72,29 @@ version = { attr = "moduletester.__version__" }
 
 [tool.pytest.ini_options]
 testpaths = ["moduletester/tests"]
+
+[tool.ruff]
+exclude = [".git", ".vscode", "build", "dist", "venv*", ".venv*"]
+line-length = 88
+indent-width = 4
+target-version = "py39"
+
+[tool.ruff.lint]
+select = [
+    "E",      # Pycodestyle error
+    "F",      # Pyflakes
+    "I",      # Isort
+    "W",      # Pycodestyle warning
+]
+ignore = [
+    "E203",   # space before : (needed for how black formats slicing)
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+
+[tool.ruff.lint.per-file-ignores]
+"doc/*" = ["E402"]

@@ -11,8 +11,6 @@ from qtpy import QtCore as QC
 from qtpy import QtGui as QG
 from qtpy import QtWidgets as QW
 
-import moduletester.config as cfg
-from moduletester.gui.states.signals import TMSignals
 from moduletester.gui.widgets.dockable_widget import DockableQWidget
 
 

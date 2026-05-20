@@ -46,8 +46,7 @@ class ConfigEditor(Editor):
                 QW.QMessageBox.question(
                     self,
                     "Overwrite configuration file?",
-                    "Do you want to overwrite the existing file?\n"
-                    f"{self.config_path}",
+                    f"Do you want to overwrite the existing file?\n{self.config_path}",
                     QW.QMessageBox.Yes | QW.QMessageBox.No,
                 )
                 == QW.QMessageBox.Yes

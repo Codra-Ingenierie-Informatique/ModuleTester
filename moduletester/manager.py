@@ -7,7 +7,6 @@ from __future__ import annotations
 import os
 import shutil
 from dataclasses import dataclass, field
-from importlib import import_module
 from typing import Callable, Optional
 
 from guidata.guitest import get_test_package  # type: ignore
@@ -15,7 +14,6 @@ from guidata.guitest import get_test_package  # type: ignore
 from moduletester import config as cfg
 
 from .model import Module, TestSuite
-from .python_helpers import rst2odt
 from .serializer import dumper, loader
 
 CONTEXT_SETTINGS = dict(
