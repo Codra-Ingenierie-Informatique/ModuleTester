@@ -11,11 +11,23 @@ The :mod:`moduletester` package requires the following Python modules:
       - >=3.8, <4
       - 
     * - guidata 
-      - >= 3.1
+      - >= 3.3
       - 
     * - QtPy 
       - >= 1.9
       - 
+    * - click
+      - 
+      - Composable command line interface toolkit
+    * - pyqtwebengine
+      - 
+      - Python bindings for the Qt WebEngine framework
+    * - pypandoc
+      - 
+      - Thin wrapper for pandoc.
+    * - jinja2
+      - 
+      - A very fast and expressive template engine.
     * - beautifulsoup4
       - 
       - Screen-scraping library

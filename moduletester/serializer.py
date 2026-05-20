@@ -1,5 +1,7 @@
 # pylint: disable=empty-docstring, missing-class-docstring,
 # pylint: disable=missing-function-docstring, missing-module-docstring
+from __future__ import annotations
+
 import json
 from abc import ABC, abstractmethod
 from dataclasses import asdict, fields, is_dataclass
@@ -30,12 +32,10 @@ class IJSONSerializer(ABC, Generic[ISerializerT, IJsonT]):
         cls.TYPES[data_type] = serializer or cls()
 
     @abstractmethod
-    def serialize(self, obj: ISerializerT) -> IJsonT:
-        ...
+    def serialize(self, obj: ISerializerT) -> IJsonT: ...
 
     @abstractmethod
-    def deserialize(self, obj: IJsonT) -> ISerializerT:
-        ...
+    def deserialize(self, obj: IJsonT) -> ISerializerT: ...
 
 
 class ObjectSerializerBase(IJSONSerializer[ISerializerT, Dict[str, Any]]):
@@ -171,6 +171,6 @@ def dumper(path: str, obj: Any) -> None:
         ObjectSerializerBase.dump(obj, output)
 
 
-def loader(path: str) -> Any:
-    with open(path, encoding="utf-8") as obj:
+def loader(path: str) -> Any | None:
+    with open(path, "rb") as obj:
         return ObjectSerializerBase.load(obj)

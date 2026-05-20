@@ -1,0 +1,18 @@
+<svg viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
+    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+    <g id="SVGRepo_iconCarrier">
+        <g stroke="#006ab0" stroke-width="1" fill-rule="evenodd" fill-opacity="0">
+            <rect x="2" y="2" rx="1" width="8" height="12"></rect>
+            <rect x="2" y="16" rx="1" width="8" height="4"></rect>
+            <rect x="12" y="2" rx="1" width="8" height="7"></rect>
+            <rect x="12" y="11" rx="1" width="8" height="9"></rect>
+        </g>
+        <g fill="#006ab0" fill-rule="evenodd">
+            <rect x="2" y="2" rx="1" width="8" height="2"></rect>
+            <rect x="2" y="16" rx="1" width="8" height="2"></rect>
+            <rect x="12" y="2" rx="1" width="8" height="2"></rect>
+            <rect x="12" y="11" rx="1" width="8" height="2"></rect>
+        </g>
+    </g>
+</svg>

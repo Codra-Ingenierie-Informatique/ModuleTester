@@ -16,8 +16,8 @@ ModuleTester is a spin-off of the `DataLab`_ project, mainly used to test
     :align: center
     :width: 300 px
 
-    ModuleTester is powered by `PlotPyStack <https://github.com/PlotPyStack>`_,
-    the scientific Python-Qt visualization and graphical user interface stack.
+ModuleTester is powered by `PlotPyStack <https://github.com/PlotPyStack>`_,
+the scientific Python-Qt visualization and graphical user interface stack.
 
 .. note:: ModuleTester was created by `Codra`_ in 2023. It is developed and
           maintained by ModuleTester open-source project team

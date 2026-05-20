@@ -12,6 +12,12 @@ from moduletester.model import Test
 
 
 class ResultError(QW.QWidget):
+    """Widget to display the error message of a test result (stderr).
+
+    Args:
+        parent: Parent widget. Defaults to None.
+    """
+
     def __init__(self, parent: Optional[QW.QWidget] = None):
         super().__init__(parent)
 
@@ -26,13 +32,16 @@ class ResultError(QW.QWidget):
 
         # Config
         self.label.setWordWrapMode(QG.QTextOption.WordWrap)
-        self.label.setTextInteractionFlags(QC.Qt.TextSelectableByMouse)
-        self.label.setAlignment(QC.Qt.AlignTop)
+        self.label.setTextInteractionFlags(
+            QC.Qt.TextInteractionFlag.TextSelectableByMouse
+        )
+        self.label.setAlignment(QC.Qt.AlignmentFlag.AlignTop)
         self.label.setFrameStyle(0)
         self.icon.setFixedWidth(32)
-        self.icon.setAlignment(QC.Qt.AlignTop)
+        self.icon.setAlignment(QC.Qt.AlignmentFlag.AlignTop)
 
     def set_item(self, test: Test):
+        """Set the test to display the error message of."""
         if test.result is None:
             text_level = "Information"
             text = "No result yet"

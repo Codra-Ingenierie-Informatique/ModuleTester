@@ -3,64 +3,69 @@
 
 from typing import Any, Dict, Optional
 
-from qtpy import QtCore as QC
+from guidata.dataset import DataSet
+from guidata.dataset.dataitems import IntItem, StringItem
+from guidata.dataset.qtwidgets import DataSetEditGroupBox
 from qtpy import QtWidgets as QW
 
+from moduletester.gui.widgets.dockable_widget import DockableQWidget
 from moduletester.model import Test
 
 
-class TestProps(QW.QGroupBox):
-    def __init__(self, parent: Optional[QW.QWidget] = None):
-        super().__init__(parent)
+class _PropertiesDataSet(DataSet):
+    name = StringItem("Name").set_prop("display", active=False)
+    source = StringItem("Source").set_prop("display", active=False)
+    path = StringItem("Path").set_prop("display", active=False)
+    args = StringItem("Args").set_prop("display", placeholder="No args")
+    timeout = IntItem("Timeout", default=0)
+
+
+class TestProps(DockableQWidget):
+    """Widget to display the properties of a test.
+
+    Args:
+        title: Title of the widget. Defaults to "Test Properties".
+        parent: Parent widget. Defaults to None.
+    """
+
+    def __init__(self, title="Test Properties", parent: Optional[QW.QWidget] = None):
+        super().__init__(parent, title)
         self.props: Dict[str, Any] = {}
 
         # Widgets
-        self.table = QW.QTreeWidget()
-
+        self.dataset_gbox = DataSetEditGroupBox(None, _PropertiesDataSet)
         # Layout
         self.vlayout = QW.QVBoxLayout(self)
-        self.vlayout.addWidget(self.table)
+        self.vlayout.addWidget(self.title_label)
+        self.vlayout.addWidget(self.dataset_gbox)
+
+        self.props = {}
 
     def setup(self):
-        self.setTitle("Properties")
-
-        self.table.setHeaderLabels(["Property", "Value"])
-        self.table.setIndentation(False)
-        self.table.setColumnWidth(0, 100)
-        self.table.setColumnWidth(1, 200)
-        self.table.setAlternatingRowColors(True)
-
-        self.table.setEditTriggers(QW.QAbstractItemView.NoEditTriggers)
-
-        self.table.itemDoubleClicked.connect(self.on_item_double_clicked)
+        """Setup the widget. Empty."""
+        pass
 
     def set_props(self, test: Test):
-        self.props = {
-            "name": test.package.last_name,
-            "source": test.package.full_name.split(".")[0],
-            "path": test.package.root_path,
-            "args": test.command_args if test.command_args != "" else "No args",
-            "timeout": test.command_timeout if test.command_timeout != 86400 else 0,
-        }
+        """Set the widget properties from a test.
 
-        for _ in range(self.table.topLevelItemCount()):
-            self.table.takeTopLevelItem(0)
+        Args:
+            test: Test to set the properties from.
+        """
+        self.props.update(
+            {
+                "name": test.package.last_name,
+                "source": test.package.full_name.split(".")[0],
+                "path": test.package.root_path,
+                "args": test.command_args,
+                "timeout": test.command_timeout,
+            }
+        )
+        dataset = self.dataset_gbox.dataset
+        dataset.name = test.package.last_name
+        dataset.source = test.package.full_name.split(".")[0]
+        dataset.path = test.package.root_path
+        dataset.args = test.command_args
+        dataset.timeout = test.command_timeout
 
-        for key, value in self.props.items():
-            item = QW.QTreeWidgetItem((str(key), str(value)))
-            if key not in ("name", "source", "path"):
-                item.setFlags(
-                    QC.Qt.ItemIsEditable | QC.Qt.ItemIsSelectable | QC.Qt.ItemIsEnabled
-                )
-
-            tooltip = f"{key}: {value}"
-            self.set_tool_tips(item, tooltip)
-            self.table.addTopLevelItem(item)
-
-    def set_tool_tips(self, item: QW.QTreeWidgetItem, tooltip: str):
-        for col_index in range(item.columnCount()):
-            item.setToolTip(col_index, tooltip)
-
-    def on_item_double_clicked(self, item: QW.QTreeWidgetItem, column: int):
-        if column == 1 and item.flags() & QC.Qt.ItemIsEditable:
-            self.table.editItem(item, column)
+        self.dataset_gbox.get()
+        self.dataset_gbox.set_apply_button_state(False)

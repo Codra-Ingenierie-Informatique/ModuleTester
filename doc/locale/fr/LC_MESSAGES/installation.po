@@ -1,0 +1,235 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2023, Codra - Pierre Raybaut
+# This file is distributed under the same license as the ModuleTester
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: ModuleTester \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-13 16:12+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.14.0\n"
+
+#: ../../installation.rst:2
+msgid "Installation"
+msgstr ""
+
+#: ../../installation.rst:5
+msgid "Dependencies"
+msgstr ""
+
+#: ../../requirements.rst:1
+msgid "The :mod:`moduletester` package requires the following Python modules:"
+msgstr ""
+
+#: ../../requirements.rst:7 ../../requirements.rst:44 ../../requirements.rst:66
+msgid "Name"
+msgstr ""
+
+#: ../../requirements.rst:8 ../../requirements.rst:45 ../../requirements.rst:67
+msgid "Version"
+msgstr ""
+
+#: ../../requirements.rst:9 ../../requirements.rst:46 ../../requirements.rst:68
+msgid "Summary"
+msgstr ""
+
+#: ../../requirements.rst:10
+msgid "Python"
+msgstr ""
+
+#: ../../requirements.rst:11
+msgid ">=3.8, <4"
+msgstr ""
+
+#: ../../requirements.rst:13
+msgid "guidata"
+msgstr ""
+
+#: ../../requirements.rst:14
+msgid ">= 3.3"
+msgstr ""
+
+#: ../../requirements.rst:16
+msgid "QtPy"
+msgstr ""
+
+#: ../../requirements.rst:17
+msgid ">= 1.9"
+msgstr ""
+
+#: ../../requirements.rst:19
+msgid "click"
+msgstr ""
+
+#: ../../requirements.rst:21
+msgid "Composable command line interface toolkit"
+msgstr ""
+
+#: ../../requirements.rst:22
+msgid "pyqtwebengine"
+msgstr ""
+
+#: ../../requirements.rst:24
+msgid "Python bindings for the Qt WebEngine framework"
+msgstr ""
+
+#: ../../requirements.rst:25
+msgid "pypandoc"
+msgstr ""
+
+#: ../../requirements.rst:27
+msgid "Thin wrapper for pandoc."
+msgstr ""
+
+#: ../../requirements.rst:28
+msgid "jinja2"
+msgstr ""
+
+#: ../../requirements.rst:30
+msgid "A very fast and expressive template engine."
+msgstr ""
+
+#: ../../requirements.rst:31
+msgid "beautifulsoup4"
+msgstr ""
+
+#: ../../requirements.rst:33
+msgid "Screen-scraping library"
+msgstr ""
+
+#: ../../requirements.rst:34 ../../requirements.rst:69
+msgid "PyQt5"
+msgstr ""
+
+#: ../../requirements.rst:35
+msgid ">=5.11"
+msgstr ""
+
+#: ../../requirements.rst:36 ../../requirements.rst:71
+msgid "Python bindings for the Qt cross platform application toolkit"
+msgstr ""
+
+#: ../../requirements.rst:38
+msgid "Optional modules for development:"
+msgstr ""
+
+#: ../../requirements.rst:47
+msgid "black"
+msgstr ""
+
+#: ../../requirements.rst:49
+msgid "The uncompromising code formatter."
+msgstr ""
+
+#: ../../requirements.rst:50
+msgid "isort"
+msgstr ""
+
+#: ../../requirements.rst:52
+msgid "A Python utility / library to sort Python imports."
+msgstr ""
+
+#: ../../requirements.rst:53
+msgid "pylint"
+msgstr ""
+
+#: ../../requirements.rst:55
+msgid "python code static checker"
+msgstr ""
+
+#: ../../requirements.rst:56
+msgid "Coverage"
+msgstr ""
+
+#: ../../requirements.rst:58
+msgid "Code coverage measurement for Python"
+msgstr ""
+
+#: ../../requirements.rst:60
+msgid "Optional modules for building the documentation:"
+msgstr ""
+
+#: ../../requirements.rst:72
+msgid "sphinx"
+msgstr ""
+
+#: ../../requirements.rst:73
+msgid ">6"
+msgstr ""
+
+#: ../../requirements.rst:74
+msgid "Python documentation generator"
+msgstr ""
+
+#: ../../requirements.rst:75
+msgid "pydata_sphinx_theme"
+msgstr ""
+
+#: ../../requirements.rst:77
+msgid "Bootstrap-based Sphinx theme from the PyData community"
+msgstr ""
+
+#: ../../installation.rst:11
+msgid "Python 3.11 and PyQt5 are the reference for production release"
+msgstr ""
+
+#: ../../installation.rst:15
+msgid "How to install"
+msgstr ""
+
+#: ../../installation.rst:18
+msgid "Wheel package:"
+msgstr ""
+
+#: ../../installation.rst:20
+msgid ""
+"On any operating system, using pip and the Wheel package is the easiest "
+"way to install ModuleTester on an existing Python distribution:"
+msgstr ""
+
+#: ../../installation.rst:27
+msgid ""
+"ModuleTester uses Pandoc and PyPandoc bindings to generate documents and "
+"display test descriptions. You can get `Pandoc "
+"<https://pandoc.org/installing.html>`_ from `here "
+"<https://pandoc.org/installing.html>`_ or by executing the following "
+"python code ( All instructions are available on the `PyPandoc "
+"documentation <https://pypi.org/project/pypandoc/>`_)."
+msgstr ""
+
+#: ../../installation.rst:46
+msgid "Source package:"
+msgstr ""
+
+#: ../../installation.rst:48
+msgid ""
+"Installing ModuleTester directly from the source package is "
+"straigthforward:"
+msgstr ""
+
+#~ msgid "pyqtspinner"
+#~ msgstr ""
+
+#~ msgid ">= 3.1"
+#~ msgstr ""
+
+#~ msgid "beautifulsoup4"
+#~ msgstr ""
+
+#~ msgid "Screen-scraping library"
+#~ msgstr ""
+
+#~ msgid "Python bindings for the Qt WebEngine library"
+#~ msgstr ""
+

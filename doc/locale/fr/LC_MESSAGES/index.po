@@ -1,0 +1,86 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2023, Codra - Pierre Raybaut
+# This file is distributed under the same license as the ModuleTester
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: ModuleTester \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-02-29 16:45+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.14.0\n"
+
+#: ../../index.rst:35
+msgid "Contents:"
+msgstr ""
+
+#: ../../index.rst:2
+msgid "ModuleTester User Guide"
+msgstr ""
+
+#: ../../index.rst:4
+msgid "ModuleTester is a library for executing and managing Python package tests."
+msgstr ""
+
+#: ../../index.rst:9
+msgid ""
+"ModuleTester is a spin-off of the `DataLab`_ project, mainly used to test"
+" `PlotPyStack`_ libraries."
+msgstr ""
+
+#: ../../index.rst:19
+msgid ""
+"ModuleTester is powered by `PlotPyStack "
+"<https://github.com/PlotPyStack>`_, the scientific Python-Qt "
+"visualization and graphical user interface stack."
+msgstr ""
+
+#: ../../index.rst:22
+msgid ""
+"ModuleTester was created by `Codra`_ in 2023. It is developed and "
+"maintained by ModuleTester open-source project team with the support of "
+"`Codra`_."
+msgstr ""
+
+#: ../../index.rst:33
+msgid "External resources:"
+msgstr ""
+
+#: ../../index.rst:30
+msgid "`GitHub`_"
+msgstr ""
+
+#: ../../index.rst:31
+msgid "Project home page"
+msgstr ""
+
+#: ../../index.rst:32
+msgid "`PyPI`_"
+msgstr ""
+
+#: ../../index.rst:33
+msgid "Python Package Index"
+msgstr ""
+
+#: ../../index.rst:44
+msgid "Copyrights and licensing"
+msgstr ""
+
+#: ../../index.rst:46
+msgid "Copyright © 2023 `Codra`_"
+msgstr ""
+
+#: ../../index.rst:47
+msgid "Licensed under the terms of the `BSD 3-Clause`_"
+msgstr ""
+

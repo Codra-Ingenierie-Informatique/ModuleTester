@@ -1,77 +1,108 @@
 # pylint: disable=missing-module-docstring, missing-class-docstring
 # pylint: disable=missing-function-docstring
+from __future__ import annotations
 
 from typing import Any, Dict, Optional
 
+from guidata.configtools import get_icon
+from guidata.dataset import DataSet
+from guidata.dataset.dataitems import StringItem
+from guidata.dataset.qtwidgets import DataSetEditGroupBox
 from qtpy import QtWidgets as QW
 
+from moduletester.config import _
+from moduletester.gui.widgets.dockable_widget import DockableQWidget
 from moduletester.model import ResultEnum, Test
 
 
-class ResultProps(QW.QGroupBox):
+class _PropertiesDataSet(DataSet):
+    return_code = StringItem("Return code").set_prop("display", active=False)
+    execution_duration = StringItem("Execution duration").set_prop(
+        "display", active=False
+    )
+    last_run = StringItem("Last run").set_prop("display", active=False)
+    status = StringItem("Status").set_prop("display", active=False)
+
+
+class ResultProps(DockableQWidget):
+    """Widget to display the properties of a test result.
+
+    Args:
+        parent: Parent widget. Defaults to None.
+    """
+
     def __init__(self, parent: Optional[QW.QWidget] = None):
-        super().__init__(parent)
+        super().__init__(parent, title="Test Execution")
         self.props: Dict[str, Any] = {}
 
         # Widgets
         self.result_enum = QW.QComboBox()
-        self.table = QW.QTreeWidget()
-
+        # self.table = QW.QTreeWidget()
+        self.dataset_gbox = DataSetEditGroupBox(
+            "", _PropertiesDataSet, show_button=False
+        )
+        self.dataset_gbox.updateGeometry()
+        self.dataset_gbox.get()
         # Layouts
         self.vlayout = QW.QVBoxLayout(self)
+        self.vlayout.addWidget(self.title_label)
         self.vlayout.addWidget(self.result_enum)
-        self.vlayout.addWidget(self.table)
+        self.vlayout.addWidget(self.dataset_gbox)
+        self.dataset_gbox.update()
 
         # Config
-        result_value = [result.value for result in ResultEnum]
-        self.result_enum.addItems(result_value)
-
-        self.table.setHeaderLabels(["Property", "Value"])
-        self.table.setAlternatingRowColors(True)
-        self.table.setIndentation(False)
-        self.table.setColumnWidth(0, 100)
-        self.table.setColumnWidth(1, 200)
+        for i, result in enumerate(ResultEnum):
+            self.result_enum.addItem(result.format(), result)  # noqa: F821
+            self.result_enum.setItemIcon(i, get_icon(result.icon_path))
 
     def set_item(self, test: Test):
-        self.set_props(test)
-        result_value = "no result"
-        if test.result is not None:
-            result_value = test.result.result.value
+        """Set the test to display the properties of.
 
-        if test.result is None:
+        Args:
+            test: Test to display the properties of.
+        """
+        self.set_props(test)
+        result = ResultEnum.NO_RESULT
+        if test.result is not None:
+            result = test.result.result
+
+        if test.result is None or test.is_running():
             self.result_enum.setEnabled(False)
         else:
             self.result_enum.setEnabled(True)
 
         self.result_enum.blockSignals(True)
-        self.result_enum.setCurrentText(result_value)
+        self.result_enum.setCurrentText(result.format())
         self.result_enum.blockSignals(False)
 
     def set_props(self, test: Test):
+        """Set the properties displayed in the widget using the given test.
+
+        Args:
+            test: Test to display the properties of.
+        """
         if test.result is not None:
-            self.props = {
-                "return code": test.result.error_code,
-                "execution duration": test.result.execution_duration,
-                "last run": test.result.last_run,
-                "status": test.result.status.value,
-            }
+            self.props.update(
+                {
+                    "return code": test.result.error_code,
+                    "execution duration": test.result.execution_duration,
+                    "last run": test.result.last_run,
+                    "status": test.result.status.value,
+                }
+            )
 
             if self.props["execution duration"] is not None:
                 self.props["execution duration"] = round(
                     self.props["execution duration"], 3
                 )
         else:
-            self.props = {}
+            self.props.clear()
 
-        for _ in range(self.table.topLevelItemCount()):
-            self.table.takeTopLevelItem(0)
+        dataset = self.dataset_gbox.dataset
+        dataset.return_code = self.props.get("return code", "")
+        dataset.execution_duration = self.props.get("execution duration", "")
+        dataset.last_run = self.props.get("last run", "")
+        dataset.status = self.props.get("status", "")
 
-        for key, value in self.props.items():
-            item = QW.QTreeWidgetItem((str(key), str(value)))
-            tooltip = f"{key}: {value}"
-            self.set_tool_tips(item, tooltip)
-            self.table.addTopLevelItem(item)
-
-    def set_tool_tips(self, item: QW.QTreeWidgetItem, tooltip: str):
-        for col_index in range(item.columnCount()):
-            item.setToolTip(col_index, tooltip)
+        self.dataset_gbox.updateGeometry()
+        self.dataset_gbox.get()

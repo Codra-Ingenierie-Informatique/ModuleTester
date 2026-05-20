@@ -13,6 +13,10 @@ doc/install_requires.txt
 doc/extras_require-dev.txt
 doc/extras_require-doc.txt
 *.bak
+*.moduletester
+tmp/*
+rtv/*
+dtv/*
 
 # Created by https://www.gitignore.io/api/python
 
@@ -28,6 +32,7 @@ __pycache__/
 # Distribution / packaging
 .Python
 env/
+.venv/
 build/
 _build/
 develop-eggs/
@@ -79,3 +84,9 @@ cdl/data/doc/
 target/
 
 /.spyproject
+
+# document generation
+*/rtv/*
+*/dtv/*
+moduletester/data/icons/*.py
+*codra*.docx
