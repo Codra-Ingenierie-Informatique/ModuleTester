@@ -1,64 +1,44 @@
-# -*- coding: utf-8 -*-
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR ORGANIZATION
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# French translations for moduletester.
+# Copyright (C) 2026 ORGANIZATION
+# This file is distributed under the same license as the moduletester project.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2024-03-13 16:12+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: pygettext.py 1.5\n"
 
-#: moduletester\gui\window.py:396
 msgid "Error during moduletester file loading."
 msgstr "Erreur lors du chargement du fichier moduletester."
 
-#: moduletester\gui\window.py:398
+#, python-format
 msgid "Error while parsing the .moduletester file: %s"
 msgstr "Erreur lors du chargement du fichier .moduletester : %s"
 
-#: moduletester\gui\window.py:400
 msgid "Missing modules:"
 msgstr "Modules manquants :"
 
-#: moduletester\gui\window.py:402
 msgid "Do you want to reimport all tests and override the current file?"
 msgstr "Vous voulez réimporter tous les tests et écraser le fichier actuel ?"
 
-#: moduletester\gui\window.py:427
 msgid "Error during module loading."
 msgstr "Erreur lors du chargement du module."
 
-#: moduletester\gui\window.py:429
 msgid "Error while importing modules:"
 msgstr "Erreur lors de l'importation des modules :"
 
-#: moduletester\gui\window.py:431
-msgid ""
-"The modules are still visible in moduletester but should be fixed or removed."
-msgstr ""
-"Les modules sont toujours visibles dans moduletester mais devraient être "
-"corrigés ou supprimés."
+msgid "The modules are still visible in moduletester but should be fixed or removed."
+msgstr "Les modules sont toujours visibles dans moduletester mais devraient être corrigés ou supprimés."
 
-#: moduletester\gui\window.py:540
 msgid "Test running"
 msgstr "Test en cours"
 
-#: moduletester\gui\window.py:541
-msgid ""
-"A test is currently running, please wait for it to finish before saving."
-msgstr ""
-"Un test est en cours, veuillez attendre qu'il se termine avant de "
-"sauvegarder."
+msgid "A test is currently running, please wait for it to finish before saving."
+msgstr "Un test est en cours, veuillez attendre qu'il se termine avant de sauvegarder."
 
-#: moduletester\model.py:89
+#, python-format
 msgid ""
 "This package encountered the following error during import:\n"
 "%s"
@@ -66,47 +46,3 @@ msgstr ""
 "Ce paquet a rencontré l'erreur suivante lors de l'import :\n"
 "%s"
 
-msgid "Test List Document"
-msgstr "Document de la liste des tests"
-
-msgid "Test Results Document"
-msgstr "Document de résultat de tests"
-
-#~ msgid "Last execution date:"
-#~ msgstr "Dernière date d'exécution :"
-
-#~ msgid "%s test results summary"
-#~ msgstr "%s résumé des résultats de test"
-
-#~ msgid "No result"
-#~ msgstr "Pas de résultat"
-
-#~ msgid "Accepted"
-#~ msgstr "Validé"
-
-#~ msgid "Accepted with reserve"
-#~ msgstr "Validé sous réserve"
-
-#~ msgid "Skipped"
-#~ msgstr "Passé"
-
-#~ msgid "Rejected"
-#~ msgstr "Rejeté"
-
-#~ msgid "Count by result cateogry"
-#~ msgstr "Compte par catégorie de résultat"
-
-#~ msgid "ACCEPTED"
-#~ msgstr "ACCEPTÉ"
-
-#~ msgid "ACCEPTED WITH RESERVES"
-#~ msgstr "ACCEPTÉ SOUS RÉSERVE"
-
-#~ msgid "SKIPPED"
-#~ msgstr "PASSÉ"
-
-#~ msgid "REJECTED"
-#~ msgstr "REJETÉ"
-
-#~ msgid "NO RESULT"
-#~ msgstr "PAS DE RÉSULTAT"

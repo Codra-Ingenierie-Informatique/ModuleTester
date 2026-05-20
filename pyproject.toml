@@ -24,10 +24,12 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.11",
 ]
 requires-python = ">=3.8, <4"
 dependencies = [
-    "guidata >= 3.3",
+    "guidata >= 3.14",
     "QtPy >= 1.9",
     "click",
     "pyqtwebengine",
@@ -36,7 +38,6 @@ dependencies = [
     "beautifulsoup4",
 ]
 dynamic = ["version"]
-
 [project.urls]
 Homepage = "https://github.com/Codra-Ingenierie-Informatique/ModuleTester/"
 Documentation = "https://moduletester.readthedocs.io/en/latest/"
@@ -48,7 +49,7 @@ moduletester-cli = "moduletester.manager:cli"
 moduletester = "moduletester.gui.main:run_gui"
 
 [project.optional-dependencies]
-dev = ["black", "isort", "pylint", "Coverage"]
+dev = ["black", "isort", "pylint", "pytest", "Coverage", "build"]
 doc = ["PyQt5", "sphinx>6", "pydata_sphinx_theme"]
 
 [tool.setuptools.packages.find]
