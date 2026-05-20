@@ -70,3 +70,6 @@ include = ["moduletester*"]
 
 [tool.setuptools.dynamic]
 version = { attr = "moduletester.__version__" }
+
+[tool.pytest.ini_options]
+testpaths = ["moduletester/tests"]
