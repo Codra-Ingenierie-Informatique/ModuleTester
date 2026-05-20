@@ -11,6 +11,7 @@ description = "ModuleTester is a test management software for Python packages"
 readme = "README.md"
 license = { file = "LICENSE" }
 classifiers = [
+    "Development Status :: 5 - Production/Stable",
     "Topic :: Software Development :: Libraries :: Python Modules",
     "Topic :: Utilities",
     "Topic :: Software Development :: User Interfaces",
@@ -19,15 +20,14 @@ classifiers = [
     "Operating System :: OS Independent",
     "Operating System :: POSIX",
     "Operating System :: Unix",
-    "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
-    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.14",
 ]
-requires-python = ">=3.8, <4"
+requires-python = ">=3.9, <4"
 dependencies = [
     "guidata >= 3.14",
     "QtPy >= 1.9",
