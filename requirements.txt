@@ -11,4 +11,5 @@ pydata_sphinx_theme
 build
 twine
 pypandoc
+pypandoc_binary
 jinja2
