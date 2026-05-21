@@ -34,6 +34,7 @@ html_theme = "pydata_sphinx_theme"
 html_theme_options = {"show_toc_level": 2}
 htmlhelp_basename = project
 html_static_path = ["_static"]
+html_js_files = ["singlehtml_nav_fix.js"]
 
 # -- Options for sphinx-intl package -----------------------------------------
 
