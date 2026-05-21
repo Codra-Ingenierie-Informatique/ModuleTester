@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""Update requirements.rst file from pyproject.toml or setup.cfg file
+"""Update requirements.rst file from pyproject.toml file.
 
 Warning: this has to be done manually at release time.
 It is not done automatically by the sphinx 'conf.py' file because it
@@ -9,11 +9,14 @@ is not always possible (e.g., when building the documentation on a machine
 without internet connection like the Debian package management infrastructure).
 """
 
-from guidata.utils.genreqs import gen_module_req_rst  # noqa: E402
+import os
 
-import moduletester
+from guidata.utils.genreqs import generate_requirements_rst  # noqa: E402
 
 if __name__ == "__main__":
     print("Updating requirements.rst file...", end=" ")
-    gen_module_req_rst(moduletester, ["Python>=3.8", "PyQt5>=5.11"])
+    root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    pyproject_path = os.path.join(root_dir, "pyproject.toml")
+    doc_dir = os.path.join(root_dir, "doc")
+    generate_requirements_rst(pyproject_path, doc_dir)
     print("done.")

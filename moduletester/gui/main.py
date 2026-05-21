@@ -1,11 +1,11 @@
 # pylint: disable=missing-module-docstring, missing-class-docstring
 # pylint: disable=missing-function-docstring
 
-import sys
+import argparse
 from importlib import import_module
 from typing import Optional
 
-from qtpy import QtWidgets as QW
+from guidata.qthelpers import qt_app_context
 
 from moduletester.gui.states.signals import TMSignals
 from moduletester.gui.states.state_machine import TMStateMachine
@@ -160,20 +160,21 @@ def run(package: Optional[str] = None, path: Optional[str] = None) -> TestManage
     return main
 
 
+def run_gui():
+    """Run the gui with arguments from command line."""
+    parser = argparse.ArgumentParser("Moduletester gui launcher")
+    parser.add_argument(
+        "-p", "--package", type=str, help="Package to load", default=None
+    )
+    parser.add_argument(
+        "-f", "--file", type=str, help="Moduletester file to load", default=None
+    )
+    args = parser.parse_args()
+
+    with qt_app_context(True):
+        main = run(args.package, args.file)
+        main.window.show()
+
+
 if __name__ == "__main__":
-    # import faulthandler
-    # faulthandler.enable()
-    # faulthandler.dump_traceback_later(60, False, exit=True)
-
-    PATH = r"C:\_projets\moduletester\DataLab\run.moduletester"
-    PACKAGE = "cdl"
-    app = QW.QApplication.instance()
-    if not app:
-        app = QW.QApplication(sys.argv)
-
-    # run(package=PACKAGE)
-    # run(path=PATH)
-    moduletester = run()
-    moduletester.window.show()
-
-    app.exec_()
+    run_gui()

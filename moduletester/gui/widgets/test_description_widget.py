@@ -5,47 +5,50 @@
 
 from typing import Optional
 
-from guidata.qthelpers import get_std_icon  # type: ignore
-from qtpy import QtCore as QC
-from qtpy import QtGui as QG
 from qtpy import QtWidgets as QW
+from qtpy.QtWebEngineWidgets import QWebEnginePage  # type: ignore
 
-from moduletester.gui.states.signals import TMSignals
+from moduletester.gui.widgets.web_engine import SimpleWebViewer
 from moduletester.model import Test
 
 
 class TestDescriptionWidget(QW.QWidget):
-    def __init__(self, signals: TMSignals, parent: Optional[QW.QWidget] = None):
+    """Widget to display the description of a test. Includes a SimpleWebViewer to
+    display the HTML description of the test.
+
+    Args:
+        parent: Parent widget. Defaults to None.
+    """
+
+    def __init__(self, parent: Optional[QW.QWidget] = None):
         super().__init__(parent)
         self.test: Optional[Test] = None
-        self.signals = signals
 
         # Widgets
-        self.lbl_icon = QW.QLabel()
-        self.lbl_icon.setFixedWidth(32)
-
-        self.desc_label = QW.QTextEdit()
-        self.desc_label.setWordWrapMode(QG.QTextOption.WordWrap)
-        self.desc_label.setFrameStyle(0)
-
-        for label in (self.desc_label, self.lbl_icon):
-            label.setAlignment(QC.Qt.AlignTop)
+        self.web_view = SimpleWebViewer(web_actions=[QWebEnginePage.WebAction.Reload])  # type: ignore
+        self.web_view.pageAction(QWebEnginePage.WebAction.Reload).triggered.connect(
+            self.force_reload
+        )
 
         # Layouts
         self.hlayout = QW.QHBoxLayout(self)
-        self.hlayout.addWidget(self.lbl_icon)
-        self.hlayout.addWidget(self.desc_label)
+        self.hlayout.addWidget(self.web_view)
 
-        self.desc_label.textChanged.connect(self.text_changed)  # type: ignore
+    def force_reload(self):
+        """Force the web view to reload the content."""
+        if self.test is not None:
+            self.set_item(self.test, use_cached=False)
 
-    def text_changed(self):
-        self.signals.SIG_PROJECT_MODIFIED.emit()
-
-    def set_item(self, test: Test):
+    def set_item(self, test: Test, use_cached: bool = True):
+        """Set the test to display the description of.
+        Args:
+            test: Test to display the description of.
+            use_cached: Whether to use the cached HTML description or not.
+             Defaults to True.
+        """
         self.test = test
-        text_level = "Information" if test.is_valid else "Critical"
-        self.lbl_icon.setPixmap(get_std_icon(f"MessageBox{text_level}").pixmap(24, 24))
-
-        self.desc_label.blockSignals(True)
-        self.desc_label.setText(test.description)
-        self.desc_label.blockSignals(False)
+        self.web_view.setHtml(
+            test.get_html_description(
+                standalone=True, embeded=True, apply_style=True, use_cached=use_cached
+            )
+        )

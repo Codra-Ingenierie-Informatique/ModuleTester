@@ -1,3 +1,5 @@
 # -*- coding: utf-8 -*-
+"""ModuleTester GUI package."""
 
-from moduletester import config  # pylint: disable=unused-import
+# pylint: disable=unused-import
+from moduletester import config as config  # noqa: F401

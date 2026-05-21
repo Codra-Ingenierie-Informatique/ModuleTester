@@ -27,8 +27,7 @@ def get_original_bases(cls):
 class SupportsWrite(Protocol):
     """ """
 
-    def write(self, text: str) -> Any:
-        ...
+    def write(self, text: str, /) -> Any: ...
 
 
 # ============================================================================
@@ -119,10 +118,7 @@ def setup_sphinx(
         try:
             outs, errs = proc.communicate(timeout=0.5)
             print(
-                (
-                    f"[STDOUT] > {outs.decode('utf-8')}"
-                    f"[STDERR] > {errs.decode('utf-8')}"
-                )
+                (f"[STDOUT] > {outs.decode('utf-8')}[STDERR] > {errs.decode('utf-8')}")
             )
         except subprocess.TimeoutExpired:
             pass
@@ -155,7 +151,7 @@ def exec_rst(
     print(outs, errs)
 
 
-def parse_html(html_path: str, dtv_path: str):
+def parse_html(html_path: str, test_list_path: str):
     """Removes the navbar from the index.html file"""
     soup = None
     with open(html_path, "r", encoding="utf-8") as html_doc:
@@ -169,7 +165,7 @@ def parse_html(html_path: str, dtv_path: str):
         if footer is not None:
             footer.replaceWith("")
 
-    with open(dtv_path, "w", encoding="utf-8") as html_doc:
+    with open(test_list_path, "w", encoding="utf-8") as html_doc:
         html_doc.write(soup.prettify())
 
 
@@ -212,7 +208,7 @@ def get_image_path(file_name, dirs):
 def rst2odt(source: str, dest: str):
     """ """
     python = sys.executable
-    script = os.path.join(sys.base_prefix, "Scripts", "rst2odt.py")
+    script = os.path.join(sys.prefix, "Scripts", "rst2odt.py")
 
     proc = subprocess.Popen(" ".join([python, script, source, dest]))
 
@@ -226,7 +222,7 @@ def rst2odt(source: str, dest: str):
 def rst2html(source: str, dest: str):
     """ """
     python = sys.executable
-    script = os.path.join(sys.base_prefix, "Scripts", "rst2html.py")
+    script = os.path.join(sys.prefix, "Scripts", "rst2html.py")
 
     proc = subprocess.Popen(" ".join([python, script, source, dest]))
 

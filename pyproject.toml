@@ -11,6 +11,7 @@ description = "ModuleTester is a test management software for Python packages"
 readme = "README.md"
 license = { file = "LICENSE" }
 classifiers = [
+    "Development Status :: 5 - Production/Stable",
     "Topic :: Software Development :: Libraries :: Python Modules",
     "Topic :: Utilities",
     "Topic :: Software Development :: User Interfaces",
@@ -19,16 +20,23 @@ classifiers = [
     "Operating System :: OS Independent",
     "Operating System :: POSIX",
     "Operating System :: Unix",
-    "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
 ]
-requires-python = ">=3.8, <4"
-dependencies = ["guidata >= 3.1", "QtPy >= 1.9", "beautifulsoup4", "click"]
+requires-python = ">=3.9, <4"
+dependencies = [
+    "guidata >= 3.14",
+    "QtPy >= 1.9",
+    "pyqtwebengine",
+    "pypandoc",
+    "jinja2",
+    "beautifulsoup4",
+]
 dynamic = ["version"]
-
 [project.urls]
 Homepage = "https://github.com/Codra-Ingenierie-Informatique/ModuleTester/"
 Documentation = "https://moduletester.readthedocs.io/en/latest/"
@@ -37,17 +45,56 @@ Documentation = "https://moduletester.readthedocs.io/en/latest/"
 moduletester-cli = "moduletester.manager:cli"
 
 [project.gui-scripts]
-moduletester = "moduletester.gui:run"
+moduletester = "moduletester.gui.main:run_gui"
 
 [project.optional-dependencies]
-dev = ["black", "isort", "pylint", "Coverage"]
+dev = ["ruff", "pylint", "pytest", "Coverage", "build"]
 doc = ["PyQt5", "sphinx>6", "pydata_sphinx_theme"]
 
 [tool.setuptools.packages.find]
 include = ["moduletester*"]
 
 [tool.setuptools.package-data]
-"*" = ["*.svg", "*.mo", "*.txt", "*.json", "*.png"]
+"*" = [
+    "*.svg",
+    "*.mo",
+    "*.txt",
+    "*.json",
+    "*.png",
+    "*.j2",
+    "*.docx",
+    "*.odt",
+    "*.css",
+]
 
 [tool.setuptools.dynamic]
 version = { attr = "moduletester.__version__" }
+
+[tool.pytest.ini_options]
+testpaths = ["moduletester/tests"]
+
+[tool.ruff]
+exclude = [".git", ".vscode", "build", "dist", "venv*", ".venv*"]
+line-length = 88
+indent-width = 4
+target-version = "py39"
+
+[tool.ruff.lint]
+select = [
+    "E",      # Pycodestyle error
+    "F",      # Pyflakes
+    "I",      # Isort
+    "W",      # Pycodestyle warning
+]
+ignore = [
+    "E203",   # space before : (needed for how black formats slicing)
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+
+[tool.ruff.lint.per-file-ignores]
+"doc/*" = ["E402"]

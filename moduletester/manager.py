@@ -2,18 +2,18 @@
 # pylint: disable=missing-function-docstring, missing-module-docstring
 
 # guitest: skip
+from __future__ import annotations
 
 import os
+import shutil
 from dataclasses import dataclass, field
-from importlib import import_module
-from typing import Optional
+from typing import Callable, Optional
 
-import click
 from guidata.guitest import get_test_package  # type: ignore
 
-from .exporter import TestSuiteExporter
+from moduletester import config as cfg
+
 from .model import Module, TestSuite
-from .python_helpers import rst2odt
 from .serializer import dumper, loader
 
 CONTEXT_SETTINGS = dict(
@@ -31,30 +31,47 @@ class TestManager:
     test_suite: TestSuite = field(init=False)
     up_to_date: bool = field(init=False, default=True)
 
+    _config_conflict_err: Optional[cfg.ConfigConflictError] = field(
+        init=False, default=None
+    )
+    _config_path_val_err: Optional[cfg.InvalidPathError] = field(
+        init=False, default=None
+    )
+
     _category: str = "all"
     _template_path: str = ""
 
     def __post_init__(self):
-        if (self.module is None and self.moduletester_path is None) or (
-            self.module is not None and self.moduletester_path is not None
+        mod = self.module
+        if (mod is None and self.moduletester_path is None) or (
+            mod is not None and self.moduletester_path is not None
         ):
             raise ValueError("One argument should be None")
 
-        elif self.module is not None:
+        elif mod is not None:
             print(self._category)
-            self.test_suite = TestSuite(self.module, _category=self._category)
+            test_suite = self._try_load_testsuite(
+                lambda: TestSuite(mod, _category=self._category)
+            )
+            if test_suite is None:
+                return
+
+            self.test_suite = test_suite
 
             if self._template_path == "":
-                self._template_path = os.path.join(
-                    self.module.path, "template.moduletester"
-                )
+                self._template_path = os.path.join(mod.path, "template.moduletester")
 
             dumper(self._template_path, self.test_suite)
             print(f"Template created in '{self._template_path}'")
 
-        elif self.moduletester_path is not None:
-            test_suite = loader(self.moduletester_path)
+        elif (mod_p := self.moduletester_path) is not None:
+            test_suite = self._try_load_testsuite(lambda: loader(mod_p))
+
+            if test_suite is None:
+                return
+
             self.module = test_suite.package
+
             test_package = get_test_package(self.module.module)
             for test in test_suite.tests:
                 test.retrieve_category(test_package)
@@ -62,197 +79,55 @@ class TestManager:
             self.test_suite = test_suite
             self.up_to_date = True
 
+    def _try_load_testsuite(
+        self, test_suite_init: Callable[[], TestSuite | None]
+    ) -> TestSuite | None:
+        try:
+            return test_suite_init()  # type: ignore
+        except cfg.ConfigConflictError as e:
+            self._config_conflict_err = e
+            return None
+        except cfg.InvalidPathError as e:
+            self._config_path_val_err = e
+            return None
+
+    def get_missing_modules(self) -> list[Module]:
+        return self.test_suite.get_missing_modules()
+
+    def get_errored_modules(self) -> list[Module]:
+        return self.test_suite.get_errored_modules()
+
     def reload(self):
         """ """
         self.test_suite.reset()
 
-    def save_as(self, moduletester_path):
+    def refresh_package(self, category: Optional[str] = None):
+        self.test_suite.refresh_package(category)
+
+    def save_as(self, moduletester_path: str):
         """ """
+        backup_file = moduletester_path + ".bkp"
+        shutil.copy(moduletester_path, backup_file)
         dumper(moduletester_path, self.test_suite)
         self.moduletester_path = moduletester_path
+        os.remove(backup_file)
 
     def save(self):
         """ """
-        dumper(self.moduletester_path, self.test_suite)
+        self.save_as(self.moduletester_path or "")
 
     def open(self, moduletester_path: str):
         """ """
         test_suite = loader(moduletester_path)
         self.test_suite = test_suite
 
-    def export(self, basedir: str, model: str):
-        if model.lower() in ["rtv", "dtv"]:
-            basedir = os.path.abspath(basedir)
-            path_to_temp = os.path.join(basedir, model, "tmp")
-            path_to_rst = os.path.join(basedir, model, f"{model}.rst")
+    def pre_export(self, basedir: str, model: str):
+        basedir = os.path.abspath(basedir)
+        model_path = os.path.join(basedir, model)
+        os.makedirs(model_path, exist_ok=True)
 
-            os.makedirs(path_to_temp, exist_ok=True)
+    def get_conf_conflict_err(self) -> Optional[cfg.ConfigConflictError]:
+        return self._config_conflict_err
 
-            exporter = TestSuiteExporter(self.test_suite)
-            export_section = (
-                exporter.export_section_dtv
-                if model == "dtv"
-                else exporter.export_section_rtv
-            )
-
-            exporter.export(path_to_rst, path_to_temp, export_section)
-        else:
-            print("model parameter must be in ['rtv', 'dtv']")
-
-
-@click.group(context_settings=CONTEXT_SETTINGS)
-def cli():
-    pass
-
-
-@cli.command()
-@click.argument("package")
-@click.option(
-    "--output", "-o", default="", help="output path for .moduletester template file"
-)
-def template(package: str, output: str = ""):
-    """Generate .moduletester template file"""
-    mod = import_module(package)
-
-    if output != "" and os.path.isdir(output):
-        output = os.path.join(output, "template.moduletester")
-    elif (
-        output != ""
-        and not os.path.exists(output)
-        and not os.path.basename(output).endswith(".moduletester")
-    ):
-        raise ValueError(f"'{output}' is incorrect for output")
-
-    _ = TestManager(Module(mod), _template_path=output)
-
-
-@cli.command(context_settings=CONTEXT_SETTINGS)
-@click.pass_context
-@click.argument("moduletester_path")
-@click.option("--category", "-c", default="all", help="guitest category")
-@click.option("save_path", "--save", "-s", default="", help="Path to save result")
-@click.option("pattern", "--pattern", "-p", default="", help="test name pattern")
-@click.option("--timeout", default=86400, type=int, help="test timeout")
-def run(
-    ctx,
-    moduletester_path: str,
-    pattern: str = "",
-    category: str = "all",
-    save_path: str = "",
-    timeout: int = 86400,
-):
-    """Run tests with --test-args"""
-    testmanager = TestManager(moduletester_path=moduletester_path)
-
-    if save_path == "":
-        save_path = moduletester_path
-    elif os.path.exists(save_path):
-        raise ValueError(f'"{save_path}" already exists')
-
-    args = ""
-    if len(ctx.args) != 0:
-        args = " ".join(ctx.args)
-
-    testmanager.test_suite.run(category, pattern, timeout, args)
-    testmanager.save_as(save_path)
-    print(f"Run saved in {save_path}")
-
-
-@cli.command()
-@click.argument("moduletester_path")
-@click.option("output_dir", "--output", "-o", default="", help="Output directory")
-def dtv(moduletester_path: str, output_dir: str = ""):
-    """Generate dtv for given .moduletester file"""
-    testmanager = TestManager(moduletester_path=moduletester_path)
-    assert testmanager.module
-
-    if output_dir == "":
-        output_dir = testmanager.module.path
-
-    testmanager.export(output_dir, "dtv")
-    print(f"DTV exported in {output_dir}")
-
-
-@cli.command()
-@click.argument("moduletester_path")
-@click.option("output_dir", "--output", "-o", default="", help="Output directory")
-def rtv(moduletester_path: str, output_dir: str = ""):
-    """Generate rtv for given .moduletester file"""
-    testmanager = TestManager(moduletester_path=moduletester_path)
-    assert testmanager.module
-
-    if output_dir == "":
-        output_dir = testmanager.module.path
-
-    testmanager.export(output_dir, "rtv")
-    print(f"RTV exported in {output_dir}")
-
-
-@cli.command()
-@click.argument("moduletester_path")
-@click.option("output_dir", "--output", "-o", default="", help="Output directory")
-def doc(moduletester_path: str, output_dir: str = ""):
-    """Generate both rtv and dtv for given .testmanager file"""
-    testmanager = TestManager(moduletester_path=moduletester_path)
-
-    if testmanager.module is not None and output_dir == "":
-        path = testmanager.module.path
-    elif output_dir != "":
-        path = output_dir
-    else:
-        return
-
-    testmanager.export(path, "dtv")
-    testmanager.export(path, "rtv")
-    print(f"DTV/RTV exported in {path}")
-
-
-@cli.command
-@click.argument("rst_path")
-@click.option("output_file", "--output", "-o", default="", help="Output file")
-def odt(rst_path: str, output_file: str = ""):
-    """Convert rst file to odt file"""
-    if output_file == "":
-        output_file = os.path.abspath(rst_path.replace(".rst", ".odt"))
-    rst2odt(rst_path, output_file)
-
-
-@cli.command
-@click.argument("moduletester_path")
-def ls(moduletester_path: str):  # pylint: disable=invalid-name
-    """list test in file"""
-    testmanager = TestManager(moduletester_path=moduletester_path, _category="batch")
-
-    if len(testmanager.test_suite.tests) == 0:
-        print(f"No test found in file {moduletester_path}")
-        return
-
-    print(f"{len(testmanager.test_suite.tests)} tests found")
-    for test in testmanager.test_suite.tests:
-        print(test.package.name_from_source)
-
-
-@cli.command
-@click.argument("moduletester_path")
-def tree(moduletester_path: str):
-    """list test in file grouped by directory"""
-    testmanager = TestManager(moduletester_path=moduletester_path, _category="batch")
-    grouped_tests = testmanager.test_suite.group_tests()
-
-    len_test = len(testmanager.test_suite.tests)
-    if len_test == 0:
-        print(f"No tests found in file {moduletester_path}")
-        return
-
-    print(f"{len_test} test found\n")
-    for key, tests in grouped_tests.items():
-        print(f"{key}:")
-
-        for test in tests:
-            print(f" |  {test.package.last_name}")
-
-        print("\n")
-
-
-if __name__ == "__main__":
-    cli()
+    def get_conf_path_val_err(self) -> Optional[cfg.InvalidPathError]:
+        return self._config_path_val_err

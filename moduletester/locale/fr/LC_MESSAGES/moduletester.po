@@ -1,0 +1,48 @@
+# French translations for moduletester.
+# Copyright (C) 2026 ORGANIZATION
+# This file is distributed under the same license as the moduletester project.
+#
+msgid ""
+msgstr ""
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Error during moduletester file loading."
+msgstr "Erreur lors du chargement du fichier moduletester."
+
+#, python-format
+msgid "Error while parsing the .moduletester file: %s"
+msgstr "Erreur lors du chargement du fichier .moduletester : %s"
+
+msgid "Missing modules:"
+msgstr "Modules manquants :"
+
+msgid "Do you want to reimport all tests and override the current file?"
+msgstr "Vous voulez réimporter tous les tests et écraser le fichier actuel ?"
+
+msgid "Error during module loading."
+msgstr "Erreur lors du chargement du module."
+
+msgid "Error while importing modules:"
+msgstr "Erreur lors de l'importation des modules :"
+
+msgid "The modules are still visible in moduletester but should be fixed or removed."
+msgstr "Les modules sont toujours visibles dans moduletester mais devraient être corrigés ou supprimés."
+
+msgid "Test running"
+msgstr "Test en cours"
+
+msgid "A test is currently running, please wait for it to finish before saving."
+msgstr "Un test est en cours, veuillez attendre qu'il se termine avant de sauvegarder."
+
+#, python-format
+msgid ""
+"This package encountered the following error during import:\n"
+"%s"
+msgstr ""
+"Ce paquet a rencontré l'erreur suivante lors de l'import :\n"
+"%s"
+

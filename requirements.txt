@@ -9,3 +9,5 @@ sphinx
 pydata_sphinx_theme
 build
 twine
+pypandoc
+jinja2

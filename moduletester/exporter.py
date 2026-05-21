@@ -30,9 +30,8 @@ class TestExporter:
         images, substitutes = self.export_images(test_images)
 
         title = f"\t{title:<{self.padding}}"
-        description = (
-            f"  .. include:: {desc_path}\n\t{' ' * (self.padding+2)}\t:parser: rst\n\n"
-        )
+        pad = " " * (self.padding + 2)
+        description = f"  .. include:: {desc_path}\n\t{pad}\t:parser: rst\n\n"
 
         template = "".join([title, description, *images])
 
@@ -42,7 +41,7 @@ class TestExporter:
         """ """
         desc_content = description + "\n\n|\n"
 
-        file_name = f"{package.module.__name__}_dtv.rst"
+        file_name = f"{package.module.__name__}_test_list.rst"
         path = os.path.join(self.temp_path, file_name)
 
         with open(path, "w", encoding="utf-8") as tempfile:
@@ -96,14 +95,14 @@ class TestResultExporter:
             desc = " - \n\n"
 
         title = f"\t{name:<{self.padding_name}}"
-        result = f"{result_name:<{self.padding_result}}"
+        result_str = f"{result_name:<{self.padding_result}}"
 
-        export = "  ".join([title, result, desc])
+        export = "  ".join([title, result_str, desc])
         return export
 
     def export_comment(self, package: Module, result: TestResult) -> str:
         """ """
-        name = f"{package.module.__name__}_rtv.rst"
+        name = f"{package.module.__name__}_test_results.rst"
         path = os.path.join(self.temp_path, name)
 
         if result is not None:
@@ -132,7 +131,6 @@ class TestSuiteExporter:
         content = []
         header = format_header(self.test_suite.package_name, "=")
         grouped_tests = self.test_suite.group_tests()
-
         for group_package, test_list in grouped_tests.items():
             section = section_callback(group_package, test_list, temp_path)
             content.append(section)
@@ -145,7 +143,7 @@ class TestSuiteExporter:
         with open(rst_path, "w", encoding="utf-8") as index_rst:
             index_rst.write(rst_content)
 
-    def export_section_dtv(
+    def export_section_test_list(
         self, package: str, tests: List[Test], temp_rst_path: str
     ) -> str:
         """ """
@@ -198,7 +196,7 @@ class TestSuiteExporter:
 
         return table
 
-    def export_section_rtv(
+    def export_section_test_results(
         self, package: str, tests: List[Test], temp_path: str
     ) -> str:
         """ """
@@ -221,7 +219,8 @@ class TestSuiteExporter:
         table_content = ""
         result_exporter = TestResultExporter(temp_path, title_len, result_len)
         for test in tests:
-            table_content += result_exporter.export(test.package, test.result)
+            if test.result is not None:
+                table_content += result_exporter.export(test.package, test.result)
 
         # Building the table
         table_directive = ".. table::\n\t:widths: 15, 20, 45\n\n"

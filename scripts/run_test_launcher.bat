@@ -12,5 +12,5 @@ call %~dp0utils GetScriptPath SCRIPTPATH
 call %FUNC% SetPythonPath
 call %FUNC% UsePython
 call %FUNC% GetModName MODNAME
-python -m %MODNAME%.tests.__init__
+python -m pytest %MODNAME% %*
 call %FUNC% EndOfScript

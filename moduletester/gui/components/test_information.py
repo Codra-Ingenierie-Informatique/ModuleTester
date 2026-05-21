@@ -1,6 +1,5 @@
 # pylint: disable=missing-class-docstring, missing-module-docstring
 # pylint: disable=missing-function-docstring
-from typing import Optional
 
 from qtpy import QtCore as QC
 from qtpy import QtGui as QG
@@ -13,8 +12,12 @@ from moduletester.gui.widgets.test_prop_widget import TestProps
 from moduletester.model import Test
 
 
-class TestInformation(QW.QGroupBox):
-    def __init__(self, signals: TMSignals, parent: Optional[QW.QWidget] = None):
+class TestInformation(QW.QWidget):
+    def __init__(
+        self,
+        signals: TMSignals,
+        parent: QW.QWidget,
+    ):
         super().__init__(parent)
         self.props = {
             "name": "",
@@ -26,86 +29,104 @@ class TestInformation(QW.QGroupBox):
         self.test = None
         self.signals = signals
         # Widgets
-        self.tab_widget = QW.QTabWidget()
+        self.tab_widget = QW.QTabWidget(parent=self)
+        self.description_tab = TestDescriptionWidget(self)
         self.table_group = TestProps()
-        self.description_tab = TestDescriptionWidget(self.signals)
 
         # Layouts
-        self.hlayout = QW.QHBoxLayout(self)
+        self.vlayout = QW.QVBoxLayout(self)
+        self.vlayout.addWidget(self.tab_widget)
 
-        self.hlayout.addWidget(self.tab_widget)
-        self.hlayout.addWidget(self.table_group)
-
-        self.table_group.setFixedWidth(350)
         self.table_group.setup()
 
-    @property
-    def description(self) -> str:
-        return self.description_tab.desc_label.toPlainText()
-
     def set_item(self, test: Test, origin_path: str):
-        self.setTitle(test.package.full_name)
-        text = self.description
+        """Set the item to be displayed in the description and properties widgets.
+
+        Args:
+            test: The test to be displayed.
+            origin_path: _description_
+        """
 
         current_tab_ind = self.tab_widget.currentIndex()
 
-        self.hlayout.removeWidget(self.tab_widget)
-
-        self.description_tab = TestDescriptionWidget(self.signals)
         self.description_tab.set_item(test)
 
-        if not self.has_test_changed(test):
-            self.description_tab.desc_label.setText(text)
-
-        self.tab_widget = TabImageWidget(origin_path)
-        self.tab_widget.create_tab(test)
-        self.tab_widget.insertTab(0, self.description_tab, "Test description")
-        self.tab_widget.setCurrentIndex(0)
-        self.tab_widget.menu.open_image.triggered.connect(  # type: ignore
+        new_tab_widget = TabImageWidget(origin_path)
+        new_tab_widget.create_tab(test)
+        new_tab_widget.insertTab(0, self.description_tab, test.package.last_name)
+        new_tab_widget.menu.open_image.triggered.connect(  # type: ignore
             self.open_image
         )
+        self.vlayout.removeWidget(self.tab_widget)
 
-        self.hlayout.insertWidget(0, self.tab_widget)
+        self.vlayout.insertWidget(0, new_tab_widget)
 
-        self.tab_widget.setCurrentIndex(current_tab_ind)
+        new_tab_widget.setCurrentIndex(current_tab_ind)
         self.table_group.set_props(test)
 
+        self.tab_widget = new_tab_widget
+
     def has_test_changed(self, test: Test):
+        """Check if the current test has changed.
+
+        Args:
+            test: The test to check.
+
+        Returns:
+            True if the test has changed, False otherwise.
+        """
         if test.package.last_name == self.props["name"]:
             return False
 
         return True
 
     def open_image(self):
+        """Open the image in the current tab if the tab is a TabImageWidget."""
+        if not isinstance(self.tab_widget, TabImageWidget):
+            return
         tab_index = self.tab_widget.currentIndex() - 1  # Compensate for test desc
         image = self.tab_widget.images[tab_index]
         QG.QDesktopServices.openUrl(QC.QUrl.fromLocalFile(image))
 
-    def update_command(self, item: QW.QTreeWidgetItem, test: Test):
-        if item.text(0) == "args":
-            test.command_args = item.text(1)
-        elif item.text(0) == "timeout":
-            try:
-                if item.text(1) != "0":
-                    test.command_timeout = int(item.text(1))
-                else:
-                    test.command_timeout = 86400
-            except ValueError:
-                item.setText(1, str(test.command_timeout))
+    def update_command(self, test: Test):
+        """Update the test command arguments of the given test.
 
-        if item.text(0) in (
-            "timeout",
-            "category",
-            "save_path",
-            "pattern",
-        ) and item.text(1) not in ("", "0"):
-            if item.text(0) in test.run_opts:
-                opt_index = test.run_opts.index(item.text(0))
-                test.run_opts[opt_index + 1] = item.text(1)
-            else:
-                test.run_opts.extend([item.text(0), item.text(1)])
-        elif item.text(0) in ("timeout", "category", "save_path", "pattern"):
-            if item.text(0) in test.run_opts:
-                opt_index = test.run_opts.index(item.text(0))
+        Args:
+            test: The test to update.
+        """
+        info_dataset = self.table_group.dataset_gbox.dataset
+        test.command_args = info_dataset.args  # type: ignore
+        test.command_timeout = info_dataset.timeout  # type: ignore
+
+        for s in test.run_opts:
+            value = self.table_group.props.get(s, None)
+            is_zero_value = value in ("", "0", 0)
+
+            if not is_zero_value and value in test.run_opts:
+                opt_index = test.run_opts.index(s)
+                test.run_opts[opt_index + 1] = value
+            elif not is_zero_value:
+                test.run_opts.extend((s, value))
+            elif is_zero_value and value in test.run_opts:
+                opt_index = test.run_opts.index(s)
                 test.run_opts.remove(test.run_opts[opt_index + 1])
-                test.run_opts.remove(item.text(0))
+                test.run_opts.remove(s)
+
+        self.validate_command(test)
+
+    def validate_command(self, test: Test) -> bool:
+        """Validate the command line arguments of the given test. If the command line
+        arguments are invalid, a message box will be shown to the user."""
+        try:
+            test.build_command()
+            return True
+        except ValueError as e:
+            QW.QMessageBox(
+                QW.QMessageBox.NoIcon,
+                "Command Error",
+                "The following error occured while parsing the "
+                "command line arguments:"
+                f"\n\n\t{str(e)}\n\n"
+                "Please check the command line arguments.",
+            ).exec()
+            return False

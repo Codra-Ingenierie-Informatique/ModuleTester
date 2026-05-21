@@ -1,4 +1,4 @@
-The :mod:`moduletester` package requires the following Python modules:
+The `ModuleTester` package requires the following Python modules:
 
 .. list-table::
     :header-rows: 1
@@ -8,20 +8,26 @@ The :mod:`moduletester` package requires the following Python modules:
       - Version
       - Summary
     * - Python
-      - >=3.8, <4
-      - 
-    * - guidata 
-      - >= 3.1
-      - 
-    * - QtPy 
+      - >=3.9, <4
+      - Python programming language
+    * - guidata
+      - >= 3.14
+      - Automatic GUI generation for easy dataset editing and display
+    * - QtPy
       - >= 1.9
+      - Provides an abstraction layer on top of the various Qt bindings (PyQt5/6 and PySide2/6).
+    * - pyqtwebengine
       - 
+      - Python bindings for the Qt WebEngine framework
+    * - pypandoc
+      - 
+      - Thin wrapper for pandoc.
+    * - jinja2
+      - 
+      - A very fast and expressive template engine.
     * - beautifulsoup4
       - 
       - Screen-scraping library
-    * - PyQt5
-      - >=5.11
-      - Python bindings for the Qt cross platform application toolkit
 
 Optional modules for development:
 
@@ -32,18 +38,21 @@ Optional modules for development:
     * - Name
       - Version
       - Summary
-    * - black
+    * - ruff
       - 
-      - The uncompromising code formatter.
-    * - isort
-      - 
-      - A Python utility / library to sort Python imports.
+      - An extremely fast Python linter and code formatter, written in Rust.
     * - pylint
       - 
       - python code static checker
+    * - pytest
+      - 
+      - pytest: simple powerful testing with Python
     * - Coverage
       - 
       - Code coverage measurement for Python
+    * - build
+      - 
+      - A simple, correct Python build frontend
 
 Optional modules for building the documentation:
 
