@@ -4,9 +4,10 @@ Example
 .. figure:: images/shots/empty.png
    :align: center
 
-   Running ModuleTester lead to an empty window
+   ModuleTester main window with dockable panels and tree view navigation
 
 .. figure:: images/shots/guidata.moduletester.png
    :align: center
 
-   Using ModuleTester on `guidata` Python package
+   Running tests on the ``guidata`` package — tree view with status icons, test
+   properties, and execution results panels
