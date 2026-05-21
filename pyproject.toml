@@ -48,7 +48,7 @@ moduletester-cli = "moduletester.manager:cli"
 moduletester = "moduletester.gui.main:run_gui"
 
 [project.optional-dependencies]
-dev = ["ruff", "pylint", "pytest", "Coverage", "build"]
+dev = ["ruff", "pylint", "pytest", "Coverage", "build", "pypandoc_binary"]
 doc = ["PyQt5", "sphinx>6", "pydata_sphinx_theme"]
 
 [tool.setuptools.packages.find]

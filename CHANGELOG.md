@@ -4,11 +4,14 @@
 
 ### Bug fixes
 
-*To be documented*
+- Set fixed font for result label in `ResultError` and `ResultOutput` widgets
+- Change launch configuration type from `python` to `debugpy`
 
 ### Improvements
 
-*To be documented*
+- Add `pypandoc_binary` to requirements
+- Add missing `PyQtWebEngine` to requirements
+- Add deps requirements sync script `scripts\update_requirements.py`
 
 ## Version 1.0.0 ##
 
