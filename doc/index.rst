@@ -38,7 +38,12 @@ External resources:
 
    installation
    usage
+   user_guide
+   configuration
+   cli
+   templates
    example
+   faq
    changelog
 
 Copyrights and licensing

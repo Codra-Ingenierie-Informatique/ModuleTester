@@ -58,3 +58,15 @@ managed by `guidata <https://pypi.python.org/pypi/guidata>`_.
 
 The configuration can be edited from the GUI via the **Settings** menu
 or by editing the configuration file directly through the built-in editor.
+
+See :doc:`configuration` for the full reference of all ``moduletester.ini``
+options.
+
+
+Next steps
+----------
+
+- :doc:`user_guide` — step-by-step tutorial covering the full workflow
+- :doc:`cli` — complete command-line reference
+- :doc:`templates` — how to customise export templates
+- :doc:`faq` — common issues and solutions
