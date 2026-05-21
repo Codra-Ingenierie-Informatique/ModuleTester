@@ -1,5 +1,15 @@
 # ModuleTester Releases #
 
+## Version 1.0.1 ##
+
+### Bug fixes
+
+*To be documented*
+
+### Improvements
+
+*To be documented*
+
 ## Version 1.0.0 ##
 
 First stable release of ModuleTester.

@@ -16,7 +16,7 @@ ModuleTester is a spin-off of the `DataLab`_ project, mainly used to test
 .. _PlotPyStack: https://github.com/PlotPyStack
 """
 
-__version__ = "1.0.0"
+__version__ = "1.0.1"
 __docurl__ = "https://moduletester.readthedocs.io/en/latest/"
 __homeurl__ = "https://codra-ingenierie-informatique.github.io/moduletester/"
 __supporturl__ = (
