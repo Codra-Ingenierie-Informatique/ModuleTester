@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{{ _("Test List Document") }}: {{ doc_obj.test_suite.package.full_name.capitalize() }}</title>
+</head>
+
+<body>
+    <p>
+    <div custom-style="Author">{{ doc_obj.test_suite.author or "Unknown author " }}</div>
+    </p>
+    <p> {{ _("Last execution date:") }} {{ doc_obj.test_suite.last_run }}</p>
+    <h1>Description</h1>
+    <section class="section-block">
+        {{ doc_obj.test_suite.get_fmt_description("html").strip() or "No package description found."}} </section>
+    {% for section_name, tests in doc_obj.test_suite.group_tests().items() %}
+    <section class="new-page">
+
+        <h1>Test sub-module: {{ section_name.rsplit(".", 1)[-1] }}</h1>
+
+        {% for test in tests %}
+        <section class="section-block">
+            {% set test_name_split = test.package.last_name.split("_") %}
+            <h2>{{test_name_split[0].capitalize()}}: {{" ".join(test_name_split[1:])}}</h2>
+            <section class="test-description">
+                <h3>Description</h3>
+                {{ test.get_html_description(standalone=False, embeded=True,
+                shift_header=doc_obj.docstrings_header_shift)|safe
+                }}
+
+            </section>
+        </section>
+        <br>
+        {% endfor %}
+    </section>
+    {% endfor %}
+</body>
+
+</html>

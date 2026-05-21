@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{{ _("Test Results Document") }}: {{ doc_obj.test_suite.package.full_name.capitalize() }}</title>
+</head>
+
+<body>
+    <p>
+    <div custom-style="Author">{{ doc_obj.test_suite.author or "Unknown author " }}</div>
+    </p>
+    <p> {{ _("Last execution date:") }} {{ doc_obj.test_suite.last_run }}</p>
+    <h1>Description</h1>
+    <section class="section-block">
+        {% set extra_desc_gen_args = ["--shift-heading-level-by={s}".format(s=doc_obj.docstrings_header_shift)] %}
+        {{ doc_obj.test_suite.get_fmt_description("html", extra_desc_gen_args
+        ).strip() or "No package description found."}}
+    </section>
+    {% for section_name, tests in doc_obj.test_suite.group_tests().items() %}
+    <section class="new-page">
+
+        <h1>Test sub-module: {{ section_name.rsplit(".", 1)[-1] }}</h1>
+
+        {% for test in tests %}
+        <section class="section-block">
+            {% set test_name_split = test.package.last_name.split("_") %}
+            <h2>{{test_name_split[0].capitalize()}}: {{" ".join(test_name_split[1:])}}</h2>
+            <section class="test-description">
+                <h3>Description</h3>
+                {{ test.get_html_description(standalone=False, embeded=True,
+                shift_header=doc_obj.docstrings_header_shift)|safe
+                }}
+
+            </section>
+
+            <section class="test-command">
+                <h3>Command</h3>
+                <code style="white-space: pre-wrap;">{{ test.command or "-" }}</code>
+            </section>
+
+            <section class="test-result">
+                <h3>Result</h3>
+                {% if test.result != None %}
+                <section class="result-block">
+                    <img src="{{ test.result.result.icon_path }}" height="30px">
+                    <p>{{ test.result.result_name }}, executed on {{
+                        test.result.last_run or "-"}}</p>
+                </section>
+                {% else %}
+                <p>No result found.</p>
+                {% endif %}
+                <p style="white-space: pre-wrap;">{{ test.comment|safe }}</p>
+
+                <section class="test-images" style="display: flex;">
+                    {% for image_path in doc_obj.get_images_paths(test) %}
+                    <img src="{{image_path}}" alt="Test Image" height="300px">
+                    {% endfor %}
+                </section>
+            </section>
+        </section>
+        <br>
+        {% endfor %}
+    </section>
+    {% endfor %}
+
+    <section class="new-page">
+        <section class="section-block">
+            <h1>Summary</h1>
+            <h2>{{_("%s test results summary") % doc_obj.test_suite.package.last_name.capitalize() }}</h2>
+            <table>
+                <tr>
+                    <th>Test</th>
+                    <th>{{ _("No result") }}</th>
+                    <th>{{ _("Accepted") }}</th>
+                    <th>{{ _("Accepted with reserve") }}</th>
+                    <th>{{ _("Skipped") }}</th>
+                    <th>{{ _("Rejected") }}</th>
+                    <th>Execution date</th>
+                </tr>
+                {% for test in doc_obj.test_suite.tests %}
+                <tr>
+                    {% set result_bin = test.result_binary_label() %}
+                    <td>{{ test.package.full_name }}</td>
+                    <td>{{ "X" if result_bin[0] == 1 else "" }}</td>
+                    <td>{{ "X" if result_bin[1] == 1 else "" }}</td>
+                    <td>{{ "X" if result_bin[2] == 1 else "" }}</td>
+                    <td>{{ "X" if result_bin[3] == 1 else "" }}</td>
+                    <td>{{ "X" if result_bin[4] == 1 else "" }}</td>
+                    <td>{{ test.result.last_run }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            <h2>{{_("Count by result cateogry")}}</h2>
+            {% set result_count = doc_obj.test_suite.results_count() %}
+            <table>
+                <tr>
+                    <th>{{ _("No result") }}</th>
+                    <th>{{ _("Accepted") }}</th>
+                    <th>{{ _("Accepted with reserve") }}</th>
+                    <th>{{ _("Skipped") }}</th>
+                    <th>{{ _("Rejected") }}</th>
+                </tr>
+                <tr>
+                    <td>{{ result_count[0] }}</td>
+                    <td>{{ result_count[1] }}</td>
+                    <td>{{ result_count[2] }}</td>
+                    <td>{{ result_count[3] }}</td>
+                    <td>{{ result_count[4] }}</td>
+                </tr>
+            </table>
+        </section>
+    </section>
+
+</body>
+
+</html>
