@@ -29,6 +29,7 @@ class ResultOutput(QW.QWidget):
         self.label.setTextInteractionFlags(QC.Qt.TextSelectableByMouse)
         self.label.setFrameStyle(0)
         self.label.setAlignment(QC.Qt.AlignTop)
+        self.label.setFont(QG.QFontDatabase.systemFont(QG.QFontDatabase.FixedFont))
         self.icon.setFixedWidth(32)
         self.icon.setAlignment(QC.Qt.AlignTop)
 
