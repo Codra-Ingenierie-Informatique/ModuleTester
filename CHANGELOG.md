@@ -1,6 +1,6 @@
 # ModuleTester Releases #
 
-## Version 1.1.0 ##
+## Version 1.0.1 ##
 
 ### New features
 
@@ -8,8 +8,6 @@
   full ModuleTester integration with manual GUI tests, unit tests (pytest +
   coverage), and qualification scripts
 - Add step-by-step integration guide in documentation (`doc/example.rst`)
-
-## Version 1.0.1 ##
 
 ### Bug fixes
 
