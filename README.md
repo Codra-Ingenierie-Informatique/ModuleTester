@@ -82,6 +82,8 @@ manual GUI tests, unit tests with coverage, and qualification scripts.
 See the [integration guide](https://moduletester.readthedocs.io/en/latest/example.html)
 for a step-by-step tutorial on adding ModuleTester to your own project.
 
+![ModuleTester — example tests](https://raw.githubusercontent.com/Codra-Ingenierie-Informatique/ModuleTester/main/doc/images/shots/example.moduletester.png)
+
 ![ModuleTester — guidata tests](https://raw.githubusercontent.com/Codra-Ingenierie-Informatique/ModuleTester/main/doc/images/shots/guidata.moduletester.png)
 
 ## Documentation

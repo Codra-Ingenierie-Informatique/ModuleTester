@@ -90,6 +90,14 @@ the dockable panels:
 
 - **CLI** — displays the exact command line used to run the test.
 
+.. figure:: images/shots/example.moduletester.png
+   :align: center
+
+   Running tests on the ``example`` package available in the moduletester source code
+   — tree view with status icons, test properties, and execution results panels
+
+
+
 .. figure:: images/shots/guidata.moduletester.png
    :align: center
 
@@ -100,11 +108,11 @@ the dockable panels:
 Working with project files
 --------------------------
 
-ModuleTester can save and load project files (**.mt** format) that persist
+ModuleTester can save and load project files (**.moduletester** format) that persist
 the test list, results, and comments.
 
 - **Save**: *File → Save* (or *Save As* for a new file).
-- **Open**: *File → Open* and select an existing ``.mt`` file.
+- **Open**: *File → Open* and select an existing ``.moduletester`` file.
 - **Reload**: *File → Reload* to refresh the test list from the package
   without losing saved results.
 
@@ -112,7 +120,7 @@ You can also open a project file directly from the command line:
 
 .. code-block:: console
 
-   $ moduletester -f /path/to/project.mt
+   $ moduletester -f /path/to/project.moduletester
 
 
 Exporting reports
