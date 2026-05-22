@@ -28,7 +28,7 @@ Launch the graphical interface.
      - Python package to load on startup. The package must be importable.
    * - ``-f``, ``--file``
      - str
-     - Path to a ``.mt`` project file to open on startup.
+     - Path to a ``.moduletester`` project file to open on startup.
 
 **Examples**
 
@@ -41,7 +41,7 @@ Launch the graphical interface.
    $ moduletester -p guidata
 
    # Open a saved project file
-   $ moduletester -f /path/to/project.mt
+   $ moduletester -f /path/to/project.moduletester
 
 .. note::
 

@@ -75,9 +75,14 @@ and is used to test [PlotPyStack](https://github.com/PlotPyStack) libraries.
 
 ## Example
 
-Using ModuleTester on the `guidata` Python package — the tree view shows test
-hierarchy and execution status, while dockable panels display test properties,
-output, and errors:
+ModuleTester ships with a complete **Example Calculator** project in the
+[`example/`](example/) directory that demonstrates all three test categories:
+manual GUI tests, unit tests with coverage, and qualification scripts.
+
+See the [integration guide](https://moduletester.readthedocs.io/en/latest/example.html)
+for a step-by-step tutorial on adding ModuleTester to your own project.
+
+![ModuleTester — example tests](https://raw.githubusercontent.com/Codra-Ingenierie-Informatique/ModuleTester/main/doc/images/shots/example.moduletester.png)
 
 ![ModuleTester — guidata tests](https://raw.githubusercontent.com/Codra-Ingenierie-Informatique/ModuleTester/main/doc/images/shots/guidata.moduletester.png)
 
