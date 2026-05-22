@@ -20,19 +20,21 @@ example/
     └── tests/
         ├── __init__.py
         ├── moduletester_launcher.py        # Launcher for ModuleTester GUI
-        ├── Manual GUI Tests/
-        │   ├── test-001.py                 # Application startup
-        │   ├── test-002.py                 # Arithmetic operations via GUI
-        │   └── test-003.py                 # Unit conversions via GUI
-        ├── Unit Tests/
-        │   ├── 001-operations.py           # pytest + coverage wrapper
-        │   └── 002-converter.py            # pytest + coverage wrapper
-        ├── Qualification Tests/
-        │   ├── 001-precision.py            # Numerical precision verification
-        │   └── 002-performance.py          # Performance benchmark
-        └── processing/
-            ├── test_operations.py          # Actual pytest test cases
-            └── test_converter.py           # Actual pytest test cases
+        ├── templates/                      # Export templates (copied from defaults)
+        ├── processing/
+        │   ├── test_operations.py          # Actual pytest test cases
+        │   └── test_converter.py           # Actual pytest test cases
+        └── Test Plan/
+            ├── Manual GUI Tests/
+            │   ├── test-001.py             # Application startup
+            │   ├── test-002.py             # Arithmetic operations via GUI
+            │   └── test-003.py             # Unit conversions via GUI
+            ├── Unit Tests/
+            │   ├── 001-operations.py       # pytest + coverage wrapper
+            │   └── 002-converter.py        # pytest + coverage wrapper
+            └── Qualification Tests/
+                ├── 001-precision.py        # Numerical precision verification
+                └── 002-performance.py      # Performance benchmark
 ```
 
 ## Prerequisites
