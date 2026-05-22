@@ -1,5 +1,27 @@
 # ModuleTester Releases #
 
+## Version 1.1.0 ##
+
+### New features
+
+- Add Example Calculator reference implementation (`example/`) demonstrating
+  full ModuleTester integration with manual GUI tests, unit tests (pytest +
+  coverage), and qualification scripts
+- Add step-by-step integration guide in documentation (`doc/example.rst`)
+
+## Version 1.0.1 ##
+
+### Bug fixes
+
+- Set fixed font for result label in `ResultError` and `ResultOutput` widgets
+- Change launch configuration type from `python` to `debugpy`
+
+### Improvements
+
+- Add `pypandoc_binary` to requirements
+- Add missing `PyQtWebEngine` to requirements
+- Add deps requirements sync script `scripts\update_requirements.py`
+
 ## Version 1.0.0 ##
 
 First stable release of ModuleTester.

@@ -6,15 +6,12 @@
     "configurations": [
         {
             "name": "Run ModuleTester",
-            "type": "python",
+            "type": "debugpy",
             "request": "launch",
             "module": "moduletester.gui.main",
             "console": "integratedTerminal",
             "envFile": "${workspaceFolder}/.env",
             "justMyCode": false,
-            "args": [
-                "--unattended",
-            ],
             "env": {
                 "LANG": "en",
                 "QT_COLOR_MODE": "light",
@@ -22,7 +19,7 @@
         },
         {
             "name": "Run current file",
-            "type": "python",
+            "type": "debugpy",
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",

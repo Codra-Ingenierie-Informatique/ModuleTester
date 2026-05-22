@@ -37,6 +37,7 @@ class ResultError(QW.QWidget):
         )
         self.label.setAlignment(QC.Qt.AlignmentFlag.AlignTop)
         self.label.setFrameStyle(0)
+        self.label.setFont(QG.QFontDatabase.systemFont(QG.QFontDatabase.FixedFont))
         self.icon.setFixedWidth(32)
         self.icon.setAlignment(QC.Qt.AlignmentFlag.AlignTop)
 

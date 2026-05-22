@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "example-calculator"
+version = "1.0.0"
+description = "A minimal calculator project demonstrating ModuleTester integration"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "QtPy >= 1.9",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest",
+    "coverage",
+]
+
+[tool.setuptools.packages.find]
+include = ["example_calculator*"]
